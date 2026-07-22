@@ -1,6 +1,6 @@
 # Karin — Pamperlang Agent Website
 **Started:** 2026-07-22
-**Status:** Built from the Riette/Marjorie template — waiting on a photo
+**Status:** Built from the Riette/Marjorie template — still playing around, not live yet
 
 ---
 
@@ -13,13 +13,24 @@
 
 ---
 
+## Payment Terms Agreed
+
+- Web design fee: R800, invoiced end of the month, paid in one lump sum (not instalments like Riette)
+- Monthly hosting & maintenance: R150/month, invoiced monthly
+
+---
+
 ## Still Needed Before Going Live
 
 - [x] A photo of Karin — added 22 July 2026 (karin-hero.png)
 - [ ] A short personal intro in her own words (currently using the same generic intro as the other agents)
-- [ ] Confirm payment terms (design fee + monthly hosting — same structure as Riette's: R800 design fee over 4 months, R150/month hosting after)
-- [ ] Register the domain pamperbykarin.co.za and point it at GitHub Pages
-- [ ] Create the GitHub repo and push (not yet done — ask Elizna before publishing)
+- [ ] Register the domain pamperbykarin.co.za and point it at GitHub Pages (not done yet — CNAME file removed for now, site is preview-only on the github.io link below)
+
+## Preview Link
+
+Same approach as Riette's Hustle Hub SA site — pushed to a public GitHub repo with GitHub Pages enabled, no custom domain yet. Send Karin this link so she can follow along while we build:
+
+https://ejg1972.github.io/pamper-by-karin/
 
 ---
 
