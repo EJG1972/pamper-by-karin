@@ -15,7 +15,7 @@
 
 ## Still Needed Before Going Live
 
-- [ ] A photo of Karin (hero section currently shows a "photo coming soon" placeholder)
+- [x] A photo of Karin — added 22 July 2026 (karin-hero.png)
 - [ ] A short personal intro in her own words (currently using the same generic intro as the other agents)
 - [ ] Confirm payment terms (design fee + monthly hosting — same structure as Riette's: R800 design fee over 4 months, R150/month hosting after)
 - [ ] Register the domain pamperbykarin.co.za and point it at GitHub Pages
