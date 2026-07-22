@@ -1,0 +1,3567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pamper by Karin — Pamperlang Agent</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600&family=Raleway:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FEF4F5;
+      --warm-white: #FFFBFB;
+      --sand: #F5D4DA;
+      --rose: #C8708A;
+      --rose-light: #F2CDD6;
+      --bark: #8B3A58;
+      --bark-light: #B46888;
+      --text: #3A2028;
+      --text-light: #8A5870;
+      --gold: #C8A96A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: 0.01em; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(254,244,245,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--sand);
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--bark);
+      letter-spacing: 0.03em;
+    }
+
+    .nav-logo span { color: var(--rose); font-style: italic; }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover { color: var(--bark); }
+
+    .nav-cta {
+      background: var(--bark);
+      color: #fff !important;
+      padding: 0.5rem 1.4rem;
+      border-radius: 50px;
+    }
+
+    .nav-cta:hover { background: var(--bark-light) !important; }
+
+    /* ── NAV DROPDOWN ── */
+    .nav-item { position: relative; }
+    .nav-item:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+    .nav-dropdown {
+      position: absolute;
+      top: calc(100% + 1rem);
+      left: 50%;
+      transform: translateX(-50%) translateY(-8px);
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 16px 48px rgba(58,40,40,0.14);
+      min-width: 210px;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+      z-index: 200;
+      border: 1px solid var(--sand);
+    }
+
+    .nav-dropdown::before {
+      content: '';
+      position: absolute;
+      top: -6px; left: 50%;
+      transform: translateX(-50%) rotate(45deg);
+      width: 12px; height: 12px;
+      background: #fff;
+      border-left: 1px solid var(--sand);
+      border-top: 1px solid var(--sand);
+    }
+
+    .nav-dropdown a {
+      display: block;
+      padding: 0.6rem 1.4rem;
+      font-size: 0.78rem;
+      color: var(--text-light) !important;
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav-dropdown a:hover {
+      background: var(--cream);
+      color: var(--bark) !important;
+      padding-left: 1.8rem;
+    }
+
+    .nav-dropdown-divider { border: none; border-top: 1px solid var(--sand); margin: 0.5rem 0; }
+    .nav-arrow { font-size: 0.6rem; margin-left: 0.3rem; opacity: 0.6; }
+
+    /* ── BRAND STATEMENT ── */
+    .brand-statement {
+      background: var(--cream);
+      padding: 50px 5%;
+      text-align: center;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .brand-statement-inner {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .brand-statement p {
+      font-family: 'Raleway', sans-serif;
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-style: normal;
+      color: var(--bark);
+      line-height: 1.9;
+      font-weight: 300;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-statement strong {
+      font-weight: 600;
+      font-style: normal;
+      color: var(--bark);
+    }
+
+    .brand-statement-badge {
+      display: inline-block;
+      margin-top: 1.4rem;
+      background: var(--bark);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 0.45rem 1.2rem;
+      border-radius: 50px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      margin-top: 70px;
+      min-height: 90vh;
+      background: linear-gradient(160deg, #FEF4F5 0%, #FAEAEE 50%, #F5D4DA 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 450px; height: 450px;
+      border-radius: 50%;
+      background: rgba(242,205,214,0.3);
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      max-width: 1100px;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-text { text-align: left; }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--bark);
+      margin-bottom: 1.4rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero h1 em {
+      font-family: 'Dancing Script', cursive;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 1.7em;
+      color: var(--rose);
+      display: block;
+      line-height: 1;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-light);
+      max-width: 440px;
+      font-weight: 300;
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-badge {
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--sand);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bark);
+      font-weight: 500;
+    }
+
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── PHOTO FRAME ── */
+    .hero-photo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(-30px);
+    }
+
+    .photo-frame {
+      width: 520px;
+      height: 480px;
+      border-radius: 260px;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--sand), var(--rose-light));
+      box-shadow: 0 30px 80px rgba(139,58,88,0.2);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .photo-placeholder {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .photo-placeholder-icon {
+      font-size: 5rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    .photo-placeholder p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--bark);
+      opacity: 0.7;
+    }
+
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      background: var(--bark);
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--bark-light); transform: translateY(-2px); }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.25s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-whatsapp:hover { background: #1da851; transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1.5px solid var(--bark);
+      color: var(--bark);
+      padding: 0.9rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.25s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { background: var(--bark); color: #fff; transform: translateY(-2px); }
+
+    /* ── ABOUT STRIP ── */
+    .trust-strip {
+      background: var(--bark);
+      padding: 1.4rem 5%;
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      text-align: center;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: #fff;
+      margin-bottom: 0.1rem;
+    }
+
+    /* ── PROMO BANNER ── */
+    .promo-banner-section {
+      background: linear-gradient(135deg, #fff0f5 0%, #fff 60%, #fce4ec 100%);
+      padding: 40px 5% 32px;
+      text-align: center;
+    }
+
+    .promo-banner-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .promo-banner-label {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      color: #c2185b;
+      margin-bottom: 16px;
+    }
+
+    .promo-banner-img {
+      width: 100%;
+      max-width: 660px;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(194,24,91,0.18);
+      display: block;
+      margin: 0 auto;
+    }
+
+    .promo-banner-valid {
+      margin-top: 14px;
+      font-size: 0.82rem;
+      color: #a0516e;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+    }
+
+    /* ── SECTION HELPERS ── */
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: var(--bark);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      font-weight: 300;
+    }
+
+    .text-center { text-align: center; }
+
+    /* ── PRODUCTS ── */
+    .products {
+      padding: 80px 5%;
+      background: var(--warm-white);
+    }
+
+    .category-tabs-wrap {
+      overflow-x: auto;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--sand);
+      min-width: max-content;
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      padding: 0.8rem 1.4rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--text-light);
+      cursor: pointer;
+      position: relative;
+      transition: color 0.25s;
+      white-space: nowrap;
+    }
+
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0;
+      height: 2px;
+      background: var(--bark);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+
+    .tab-btn:hover { color: var(--bark); }
+    .tab-btn.active { color: var(--bark); }
+    .tab-btn.active::after { transform: scaleX(1); }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(139,58,88,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(245,212,218,0.5);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(139,58,88,0.14);
+    }
+
+    .product-img {
+      height: 230px;
+      overflow: hidden;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      image-orientation: from-image;
+      transition: transform 0.5s ease;
+      padding: 10px;
+    }
+
+    .product-card:hover .product-img img { transform: scale(1.07); }
+
+    .product-info { padding: 1.2rem; }
+
+    .product-category {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--bark);
+      margin-bottom: 0.4rem;
+    }
+
+    .product-desc {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-weight: 300;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--bark);
+    }
+
+    .product-btn {
+      background: var(--bark);
+      color: #fff;
+      border: none;
+      padding: 0.45rem 1rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.25s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .product-btn:hover { background: var(--bark-light); }
+    .special-badge { display:inline-block; background:#e8f5ec; color:#2e7d4f; border:1px solid #a8d5b5; border-radius:20px; font-size:10px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:3px 10px; margin-bottom:6px; }
+    .spec-two-col { display:grid; grid-template-columns:1fr 1fr; gap:24px 48px; max-width:780px; margin:28px auto 0; text-align:left; }
+    .spec-col-title { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--bark); font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding-bottom:8px; border-bottom:2px solid #a8d5b5; margin-bottom:14px; }
+    .spec-item { padding:9px 0; border-bottom:1px solid rgba(168,213,181,0.35); }
+    .spec-item:last-child { border-bottom:none; }
+    .spec-name { display:block; font-family:'Cormorant Garamond',serif; font-size:.97rem; font-weight:600; color:#3A2028; margin-bottom:3px; line-height:1.35; }
+    .spec-sizes { font-size:.82rem; color:#2e7d4f; font-weight:700; line-height:1.75; display:block; }
+    @media(max-width:600px){ .spec-two-col{ grid-template-columns:1fr; } }
+
+    /* ── ORDER SECTION ── */
+    .order-section {
+      background: linear-gradient(135deg, var(--bark) 0%, #6A2A40 100%);
+      padding: 80px 5%;
+      text-align: center;
+      color: #fff;
+    }
+
+    .order-section .section-tag { color: rgba(255,255,255,0.7); }
+    .order-section .section-title { color: #fff; }
+
+    .order-section p {
+      color: rgba(255,255,255,0.85);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .order-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      max-width: 900px;
+      margin: 0 auto 3rem;
+    }
+
+    .order-step {
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .order-step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--rose-light);
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+
+    .order-step h4 {
+      font-size: 1.1rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .order-step p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--cream);
+      padding: 80px 5%;
+    }
+
+    .contact-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+
+    .contact-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 20px rgba(139,58,88,0.07);
+      border: 1px solid rgba(245,212,218,0.5);
+    }
+
+    .contact-card-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .contact-card-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .contact-card-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      color: var(--bark);
+      font-weight: 500;
+    }
+
+    .contact-card a {
+      color: var(--bark);
+      text-decoration: none;
+    }
+
+    .contact-card a:hover { color: var(--rose); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text);
+      padding: 2.5rem 5%;
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+
+    footer a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    footer strong { color: rgba(255,255,255,0.9); }
+
+    /* ── BACK TO TOP ── */
+    .back-to-top {
+      position: fixed;
+      bottom: 6.5rem; right: 2rem;
+      width: 44px; height: 44px;
+      background: var(--bark);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(139,58,88,0.35);
+      z-index: 200;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s, transform 0.25s;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .back-to-top:hover { transform: scale(1.1); background: var(--bark-light); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .whatsapp-btn {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 58px; height: 58px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(37,211,102,0.4);
+      z-index: 200;
+      text-decoration: none;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .whatsapp-btn:hover { transform: scale(1.1); box-shadow: 0 12px 32px rgba(37,211,102,0.5); }
+    .whatsapp-btn svg { width: 30px; height: 30px; fill: #fff; }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(58,32,40,0.6);
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      border-radius: 28px;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 30px 80px rgba(58,32,40,0.3);
+    }
+
+    .modal-img {
+      width: 100%;
+      height: 280px;
+      object-fit: contain;
+      border-radius: 28px 28px 0 0;
+      image-orientation: from-image;
+      background: var(--cream);
+      padding: 16px;
+    }
+
+    .modal-img-placeholder {
+      width: 100%;
+      height: 280px;
+      background: linear-gradient(135deg, var(--rose-light), var(--sand));
+      border-radius: 28px 28px 0 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5rem;
+    }
+
+    .modal-img-card {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 28px 28px 0 0;
+      background: var(--cream);
+    }
+
+    .modal-body { padding: 2rem; }
+
+    .modal-category {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      color: var(--bark);
+      margin-bottom: 0.4rem;
+    }
+
+    .modal-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .modal-desc {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-details {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .modal-detail { font-size: 0.78rem; color: var(--text-light); }
+    .modal-detail-label { font-weight: 600; color: var(--text); display: block; margin-bottom: 0.2rem; }
+
+    .fragrance-section { margin-bottom: 1.5rem; }
+
+    .fragrance-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+
+    .fragrance-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .fragrance-swatch {
+      background: var(--cream);
+      border: 1.5px solid var(--sand);
+      border-radius: 50px;
+      padding: 0.35rem 0.9rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .fragrance-swatch:hover,
+    .fragrance-swatch.selected {
+      background: var(--bark);
+      border-color: var(--bark);
+      color: #fff;
+    }
+
+    .modal-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .modal-wrap { position: relative; }
+
+    /* ── CART ── */
+    .cart-nav-btn {
+      background: none;
+      border: 1.5px solid var(--sand);
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bark);
+      transition: all 0.25s;
+    }
+
+    .cart-nav-btn:hover { background: var(--bark); color: #fff; border-color: var(--bark); }
+
+    .cart-badge {
+      position: absolute;
+      top: -7px; right: -7px;
+      background: var(--rose);
+      color: #fff;
+      border-radius: 50%;
+      width: 20px; height: 20px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+    }
+
+    .cart-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(58,32,40,0.4);
+      z-index: 300;
+    }
+
+    .cart-overlay.open { display: block; }
+
+    .cart-drawer {
+      position: fixed;
+      top: 0; right: -540px;
+      width: 500px;
+      max-width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      background: #fff;
+      z-index: 400;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 40px rgba(58,32,40,0.15);
+      transition: right 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    .cart-drawer.open { right: 0; }
+
+    .cart-header {
+      padding: 1.4rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-header h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--bark);
+    }
+
+    .cart-header-sub {
+      font-size: 0.72rem;
+      color: var(--text-light);
+      font-weight: 300;
+      margin-top: 0.1rem;
+    }
+
+    .cart-close {
+      background: var(--cream);
+      border: none;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      transition: background 0.2s;
+    }
+
+    .cart-close:hover { background: var(--sand); color: var(--bark); }
+
+    .cart-items { flex: 1; overflow-y: auto; padding: 0.5rem 1.5rem; }
+
+    .cart-empty {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .cart-empty-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.3; }
+
+    .cart-empty p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 0.9rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--sand);
+      align-items: flex-start;
+    }
+
+    .cart-item-img {
+      width: 62px; height: 62px;
+      border-radius: 12px;
+      background: var(--cream);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .cart-item-img img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+
+    .cart-item-info { flex: 1; min-width: 0; }
+
+    .cart-item-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      color: var(--bark);
+      font-weight: 500;
+      margin-bottom: 0.15rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cart-item-fragrance {
+      font-size: 0.7rem;
+      color: var(--rose);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.25rem;
+    }
+
+    .cart-item-price { font-size: 0.82rem; color: var(--text-light); }
+
+    .cart-item-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .qty-btn {
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bark);
+      font-weight: 700;
+      transition: background 0.2s;
+      line-height: 1;
+    }
+
+    .qty-btn:hover { background: var(--sand); }
+    .qty-num { font-size: 0.82rem; font-weight: 600; color: var(--text); min-width: 14px; text-align: center; }
+
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 0.7rem;
+      cursor: pointer;
+      margin-left: auto;
+      opacity: 0.5;
+      transition: opacity 0.2s;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .cart-item-remove:hover { opacity: 1; color: var(--rose); }
+
+    .cart-footer {
+      padding: 1.2rem 1.5rem 1.8rem;
+      border-top: 1px solid var(--sand);
+      background: var(--cream);
+      flex-shrink: 0;
+    }
+
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1rem;
+    }
+
+    .cart-total-label { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--text-light); }
+
+    .cart-total-amount {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--bark);
+      font-weight: 600;
+    }
+
+    .cart-send-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 1rem;
+      font-size: 0.85rem;
+      display: none;
+    }
+
+    .cart-note {
+      font-size: 0.68rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 0.8rem;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .btn-continue-shopping {
+      display: block;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--bark);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      padding: 0.6rem;
+      border: 1.5px solid var(--blush);
+      border-radius: 50px;
+      margin-top: 0.8rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-continue-shopping:hover { background: var(--blush); color: var(--bark); }
+
+    /* Two-step cart — works on both desktop and mobile */
+    .cart-step-1 { display: block; }
+    .cart-drawer.order-step .cart-step-1 { display: none; }
+
+    #cartForm { display: none; }
+    #cartTotalRow { display: none; }
+    #cartSendBtn { display: none !important; }
+    #cartEmailBtn { display: none !important; }
+    .cart-note { display: none; }
+
+    .cart-drawer.order-step #cartForm { display: block; }
+    .cart-drawer.order-step #cartTotalRow { display: flex; }
+    .cart-drawer.order-step #cartSendBtn { display: flex !important; }
+    .cart-drawer.order-step #cartEmailBtn { display: flex !important; }
+    .cart-drawer.order-step .cart-note { display: block; }
+
+    .cart-place-order-btn {
+      display: block;
+      width: 100%;
+      background: var(--bark);
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      transition: background 0.2s;
+    }
+    .cart-place-order-btn:hover { background: var(--rose); }
+
+    .cart-back-link {
+      display: none;
+      font-size: 0.8rem;
+      color: var(--rose);
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .cart-drawer.order-step .cart-back-link { display: block; }
+
+    /* ── CART FORM ── */
+    .cart-form {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--sand);
+      display: none;
+    }
+
+    .cart-form-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      margin-top: 0.8rem;
+      display: block;
+    }
+
+    .cart-input {
+      width: 100%;
+      border: 1.5px solid var(--sand);
+      border-radius: 10px;
+      padding: 0.65rem 0.9rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text);
+      background: #fff;
+      margin-bottom: 0.6rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .cart-input:focus { border-color: var(--bark); }
+    .cart-input::placeholder { color: var(--text-light); opacity: 0.7; }
+
+    .cart-radio-group { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 0.6rem; }
+
+    .cart-radio {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .cart-radio input[type="radio"] { accent-color: var(--bark); width: 16px; height: 16px; }
+
+    .cart-delivery-info {
+      font-size: 0.72rem;
+      color: var(--bark);
+      background: rgba(139,58,88,0.08);
+      border-radius: 8px;
+      padding: 0.5rem 0.8rem;
+      margin-top: 0.4rem;
+      line-height: 1.6;
+    }
+
+    .btn-email {
+      background: #3A2028;
+      color: #fff;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.25s;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 1rem;
+      margin-top: 0.6rem;
+    }
+
+    .btn-email:hover { background: var(--bark); }
+
+    /* Added toast notification */
+    .added-notif {
+      position: fixed;
+      bottom: 5.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bark);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      z-index: 600;
+      opacity: 0;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+
+    .added-notif.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Fragrance error */
+    .fragrance-error {
+      font-size: 0.72rem;
+      color: #c0392b;
+      margin-top: 0.4rem;
+      display: none;
+      font-weight: 500;
+    }
+
+    /* Mobile nav right group — hidden on desktop */
+    .nav-mobile-right { display: none; align-items: center; gap: 0.6rem; }
+    .nav-mobile-cta { display: none; }
+    .cart-mobile-btn {
+      background: none;
+      border: 1.5px solid var(--sand);
+      border-radius: 50px;
+      padding: 0.45rem 0.75rem;
+      cursor: pointer;
+      font-size: 1rem;
+      position: relative;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+
+      /* Nav — logo on left, Order Now on right, everything else hidden */
+      nav { padding: 0 5%; height: 62px; }
+      .nav-links { display: none; }
+      .nav-logo { font-size: 1.05rem; }
+      .nav-mobile-right { display: flex; }
+      .nav-mobile-cta {
+        display: inline-block;
+        background: var(--bark);
+        color: #fff;
+        padding: 0.5rem 1.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      /* Hero — photo on top, text below, centred */
+      .hero { padding: 30px 5% 50px; margin-top: 62px; min-height: auto; }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+        text-align: center;
+      }
+      .hero-text { text-align: center; }
+      .hero-sub { margin-left: auto; margin-right: auto; max-width: 100%; }
+      .hero-badges { justify-content: center; }
+      .hero-buttons { justify-content: center; flex-direction: column; align-items: center; }
+      .hero-buttons .btn-whatsapp,
+      .hero-buttons .btn-outline { width: 100%; max-width: 280px; justify-content: center; text-align: center; }
+
+      /* Photo — full width, natural shape, no cropping */
+      .hero-photo-wrap { order: -1; }
+      .photo-frame {
+        width: 240px;
+        height: 240px;
+        border-radius: 50%;
+        margin: 0 auto;
+      }
+      .photo-frame img { object-position: center 15%; }
+
+      /* Trust strip */
+      .trust-strip { gap: 1.2rem; padding: 1.2rem 5%; }
+      .trust-item { font-size: 0.65rem; }
+
+      /* Brand statement */
+      .brand-statement { padding: 36px 5%; }
+
+      /* Products */
+      .products { padding: 44px 5%; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 0.9rem; }
+      .product-img { height: 160px; }
+      .product-info { padding: 0.9rem; }
+      .product-name { font-size: 1rem; }
+      .product-desc { font-size: 0.72rem; }
+
+      /* Order steps */
+      .order-section { padding: 44px 5%; }
+      .order-steps { grid-template-columns: 1fr; gap: 1rem; }
+
+      /* Contact */
+      .contact-section { padding: 44px 5%; }
+      .contact-cards { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+      /* WhatsApp float */
+      .whatsapp-btn { width: 50px; height: 50px; bottom: 1.2rem; right: 1.2rem; }
+      .whatsapp-btn svg { width: 26px; height: 26px; }
+
+      /* Product modal — full screen, image smaller, content scrollable */
+      .modal-overlay { padding: 0; align-items: flex-end; }
+      .modal {
+        border-radius: 24px 24px 0 0;
+        max-height: 92vh;
+        max-width: 100%;
+      }
+      .modal-img,
+      .modal-img-placeholder { height: 180px; border-radius: 24px 24px 0 0; }
+      .modal-body { padding: 1.2rem 1.4rem 1.8rem; }
+      .modal-title { font-size: 1.5rem; }
+      .modal-desc { font-size: 0.83rem; }
+      .fragrance-swatch { padding: 0.45rem 1rem; font-size: 0.78rem; }
+      .modal-actions { flex-direction: column; }
+      .modal-actions .btn-whatsapp,
+      .modal-actions .btn-outline { width: 100%; justify-content: center; text-align: center; }
+
+      /* Cart — bigger and easier to read on mobile */
+      .cart-drawer { width: 100vw; }
+      .cart-item { gap: 1rem; padding: 1.2rem 0; }
+      .cart-item-img { width: 80px; height: 80px; border-radius: 14px; }
+      .cart-item-name { font-size: 1.15rem; white-space: normal; line-height: 1.3; }
+      .cart-item-fragrance { font-size: 0.78rem; }
+      .cart-item-price { font-size: 0.9rem; }
+      .qty-btn { width: 32px; height: 32px; font-size: 1.1rem; }
+      .qty-num { font-size: 0.95rem; min-width: 20px; }
+      .cart-item-remove { font-size: 0.82rem; }
+      .cart-footer { padding: 1rem 1.5rem max(1.5rem, env(safe-area-inset-bottom, 1.5rem)); }
+      .btn-continue-shopping { margin-bottom: 0.5rem; }
+      .cart-total-amount { font-size: 1.7rem; }
+      .cart-send-btn { font-size: 0.95rem; padding: 1.1rem; }
+
+      /* Two-step cart — mobile sizing only */
+    }
+
+    /* ── PRODUCT SHOWCASE SLIDER ── */
+    .showcase-section {
+      background: #fff;
+      padding: 70px 0 50px;
+    }
+    .showcase-header {
+      text-align: center;
+      padding: 0 5%;
+      margin-bottom: 2.5rem;
+    }
+    .showcase-wrap {
+      position: relative;
+      padding: 0 64px;
+    }
+    .showcase-outer {
+      overflow: hidden;
+    }
+    .showcase-track {
+      display: flex;
+      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+    .showcase-slide {
+      flex: 0 0 calc(100% / 3);
+      padding: 0.5rem 0.8rem;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .slide-price-tag {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      background: var(--bark);
+      color: #fff;
+      border-radius: 12px;
+      padding: 0.4rem 0.8rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      line-height: 1.5;
+      pointer-events: none;
+      z-index: 3;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .slide-price-tag s { opacity: 0.65; font-weight: 400; }
+    .slide-price-tag span { color: var(--rose-light); font-size: 0.85rem; }
+    .showcase-slide img {
+      width: 100%;
+      height: 480px;
+      object-fit: contain;
+      background: var(--cream);
+      border-radius: 18px;
+      box-shadow: 0 6px 28px rgba(139,58,88,0.13);
+      display: block;
+      cursor: zoom-in;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .showcase-slide img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 44px rgba(139,58,88,0.2);
+    }
+    .showcase-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #fff;
+      border: 1.5px solid var(--sand);
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(139,58,88,0.13);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      z-index: 10;
+      color: var(--bark);
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .showcase-btn:hover { background: var(--bark); color: #fff; border-color: var(--bark); }
+    .showcase-btn-prev { left: 8px; }
+    .showcase-btn-next { right: 8px; }
+    .showcase-progress-wrap {
+      width: 140px;
+      height: 3px;
+      background: var(--sand);
+      border-radius: 3px;
+      margin: 1.8rem auto 0;
+      overflow: hidden;
+    }
+    .showcase-progress-fill {
+      height: 100%;
+      background: var(--bark);
+      border-radius: 3px;
+      transition: width 0.45s;
+      width: 0%;
+    }
+    /* Lightbox */
+    .showcase-lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30,10,18,0.88);
+      z-index: 9000;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+    .showcase-lightbox.open { display: flex; }
+    .showcase-lb-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      max-width: 480px;
+      width: 90%;
+    }
+    .showcase-lb-inner img { width: auto; max-width: 100%; max-height: calc(100vh - 17rem); min-height: 200px; border-radius: 18px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); object-fit: contain; }
+    .showcase-lb-actions {
+      background: rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 1.2rem 1.4rem;
+      text-align: center;
+      width: 100%;
+    }
+    .showcase-lb-actions-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+    .showcase-lb-actions-hint {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    .showcase-lb-btns {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .showcase-lb-order {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+      transition: background 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .showcase-lb-order:hover { background: #1da851; transform: translateY(-2px); }
+    .showcase-lb-order svg { width: 18px; height: 18px; fill: #fff; flex-shrink: 0; }
+    .showcase-lb-shop {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.4);
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .showcase-lb-shop:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.7); }
+    .showcase-lb-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.4rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
+    }
+    @media (max-width: 900px) {
+      .showcase-slide { flex: 0 0 50%; }
+      .showcase-wrap { padding: 0 52px; }
+      .showcase-slide img { height: 360px; }
+    }
+    @media (max-width: 580px) {
+      .showcase-slide { flex: 0 0 85%; }
+      .showcase-wrap { padding: 0 44px; }
+      .showcase-btn { width: 38px; height: 38px; font-size: 0.9rem; }
+      .showcase-slide img { height: 280px; }
+    }
+    @keyframes cardPulse {
+      0%   { box-shadow: 0 0 0 0 rgba(200,112,138,0); }
+      30%  { box-shadow: 0 0 0 8px rgba(200,112,138,0.55); }
+      100% { box-shadow: 0 0 0 0 rgba(200,112,138,0); }
+    }
+    .product-card.highlight-pulse { animation: cardPulse 2s ease-out !important; }
+
+    /* ── PRICE DROP BADGE ── */
+    .product-img { position: relative; }
+
+  
+    /* ── SKINCARE INFO MODAL ── */
+    .skin-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:3000;display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto;}
+    .skin-overlay.open{display:flex;}
+    .skin-modal{background:#fff;border-radius:14px;max-width:580px;width:100%;max-height:88vh;overflow-y:auto;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);}
+    .skin-modal-hdr{background:linear-gradient(135deg,#c17b8e,#e8a0b0);color:#fff;padding:22px 52px 18px 24px;border-radius:14px 14px 0 0;}
+    .skin-modal-hdr h3{font-family:'Playfair Display',Georgia,serif;font-size:1.3rem;margin:0 0 4px;}
+    .skin-modal-tagline{font-size:12px;opacity:0.9;font-style:italic;margin-bottom:6px;}
+    .skin-modal-desc{font-size:12px;opacity:0.92;line-height:1.6;}
+    .skin-modal-close{position:absolute;top:12px;right:14px;background:rgba(255,255,255,0.25);border:none;color:#fff;width:30px;height:30px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+    .skin-modal-close:hover{background:rgba(255,255,255,0.45);}
+    .skin-modal-body{padding:20px 24px;}
+    .skin-sec{margin-bottom:18px;}
+    .skin-sec-title{font-size:11px;font-weight:800;color:#8B3A52;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;display:flex;align-items:center;gap:6px;}
+    .skin-ingr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+    .skin-ingr-item{background:#fdf5f7;border:1px solid #f0d0d8;border-radius:8px;padding:9px 11px;}
+    .skin-ingr-name{font-weight:700;font-size:12px;color:#8B3A52;margin-bottom:3px;}
+    .skin-ingr-desc{font-size:11px;color:#666;line-height:1.5;}
+    .skin-list{list-style:none;margin:0;padding:0;}
+    .skin-list li{font-size:12px;color:#444;padding:4px 0 4px 18px;position:relative;line-height:1.5;}
+    .skin-list li::before{content:'✓';position:absolute;left:0;color:#c17b8e;font-weight:700;}
+    .skin-list.numbered{list-style:decimal;padding-left:18px;}
+    .skin-list.numbered li{padding-left:4px;}
+    .skin-list.numbered li::before{content:none;}
+    .skin-list.risks li::before{content:'•';color:#999;}
+    .skin-tags{display:flex;flex-wrap:wrap;gap:6px;}
+    .skin-tag{background:#fdf5f7;border:1px solid #f0d0d8;border-radius:20px;padding:3px 11px;font-size:11px;color:#8B3A52;font-weight:600;}
+    .skin-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:14px 0 4px;border-top:1px solid #f0d0d8;}
+    .skin-badge{font-size:10px;color:#8B3A52;font-weight:700;text-align:center;background:#fdf5f7;border:1px solid #f0d0d8;border-radius:6px;padding:4px 8px;}
+    .info-btn{background:none;border:1.5px solid #c17b8e;color:#c17b8e;border-radius:20px;padding:4px 11px;font-size:11px;cursor:pointer;transition:all 0.2s;white-space:nowrap;font-weight:600;margin-top:6px;}
+    .info-btn:hover{background:#c17b8e;color:#fff;}
+    /* Disclaimer */
+    .disclaimer-btn{background:none;border:1px solid rgba(255,255,255,0.5);color:#fff;font-size:12px;cursor:pointer;padding:5px 14px;border-radius:20px;letter-spacing:0.04em;}
+    .disclaimer-btn:hover{background:rgba(255,255,255,0.15);border-color:#fff;}
+    @media(max-width:500px){.skin-ingr-grid{grid-template-columns:1fr;}.skin-modal-hdr{padding-right:48px;}}
+
+    </style>
+</head>
+<body>
+
+  <!-- MAINTENANCE OVERLAY — remove this block when ready to go live -->
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-logo">Pamper <span>by Karin</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li class="nav-item">
+        <a href="#products">Products <span class="nav-arrow">▼</span></a>
+        <div class="nav-dropdown">
+          <a href="#products" onclick="filterProducts('all',null)">All Products</a>
+          <hr class="nav-dropdown-divider"/>
+          <a href="#products" onclick="filterProducts('Bath & Body',null)">Bath &amp; Body</a>
+          <a href="#products" onclick="filterProducts('Facial Skincare',null)">Facial Skincare</a>
+          <a href="#products" onclick="filterProducts('Handmade Soap',null)">Handmade Soap</a>
+          <a href="#products" onclick="filterProducts('Health & Wellness',null)">Health &amp; Wellness</a>
+          <a href="#products" onclick="filterProducts('Kids Collection',null)">Kids Collection</a>
+          <a href="#products" onclick="filterProducts('Men\'s Range',null)">Men's Range</a>
+          <a href="#products" onclick="filterProducts('Hair Care',null)">Hair Care</a>
+          <a href="#products" onclick="filterProducts('Room & Linen',null)">Room &amp; Linen</a>
+          <a href="#products" onclick="filterProducts('Perfumes',null)">Perfumes</a>
+          <a href="#products" onclick="filterProducts('Combos & Gifts',null)">Combos &amp; Gifts</a>
+        </div>
+      </li>
+      <li><a href="#how-to-order">How to Order</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li>
+        <button class="cart-nav-btn" onclick="openCart()">
+          🛍️ My Order
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </li>
+      <li><a href="#products" class="nav-cta">Order Now</a></li>
+    </ul>
+    <div class="nav-mobile-right">
+      <button class="cart-mobile-btn" onclick="openCart()">
+        🛍️ <span class="cart-badge" id="cartBadgeMobile">0</span>
+      </button>
+      <a href="#products" class="nav-mobile-cta">Order Now</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-eyebrow">Pamperlang Agent · Meyerton · Nationwide Delivery</p>
+        <h1>Hi, I'm<em>Karin</em>your Pamperlang agent</h1>
+        <p class="hero-sub">I'm a proud Pamperlang agent with a passion for natural beauty products that truly work. I deliver nationwide — so wherever you are, beautiful skin is just a WhatsApp away.</p>
+        <div class="hero-badges">
+          <span class="hero-badge">100% Natural</span>
+          <span class="hero-badge">Handcrafted</span>
+          <span class="hero-badge">Nationwide Courier</span>
+          <span class="hero-badge">SA Made</span>
+        </div>
+        <div class="hero-buttons">
+          <a href="https://wa.me/27834331977" target="_blank" class="btn-whatsapp">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp Me
+          </a>
+          <a href="#products" class="btn-outline">View Products</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="photo-frame">
+          <div class="photo-placeholder">
+            <div class="photo-placeholder-icon">🌸</div>
+            <p>Karin's photo<br/>coming soon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust Strip -->
+  <div class="trust-strip">
+    <div class="trust-item"><strong>Meyerton</strong>Based in</div>
+    <div class="trust-item"><strong>Nationwide</strong>Courier delivery</div>
+    <div class="trust-item"><strong>Pamperlang</strong>Official agent</div>
+    <div class="trust-item"><strong>Natural</strong>Ingredients</div>
+  </div>
+
+  <!-- Brand Statement -->
+  <div class="brand-statement">
+    <div class="brand-statement-inner">
+      <p>Pamperlang stands for <strong>pure beauty</strong>, natural skincare, natural wellness and luxurious bath &amp; body products — made with integrity.<br/>
+      We believe in products that are effective, safe for all ages, and gentle on the skin, the body and the environment.</p>
+      <span class="brand-statement-badge">100% Natural</span>
+    </div>
+  </div>
+
+  <!-- CLEARANCE BANNER -->
+
+
+  <!-- R99 Week 20-26 Julie 2026 -->
+  <section class="promo-banner-section" id="r99-week">
+    <div class="promo-banner-inner">
+      <div class="promo-banner-label">Dis weer tyd vir Pamperlang se gewilde R99 Week! 🤩</div>
+      <img src="r99-week-main.jpeg" alt="Pamperlang R99 Week — 20 tot 26 Julie 2026" class="promo-banner-img">
+      <div class="promo-banner-valid">Jy het gewag... en nou is dit hier! 'n Groot verskeidenheid gewilde produkte nou slegs R99 elk — 20 tot 26 Julie 2026</div>
+    </div>
+  </section>
+
+  <!-- Product Showcase Slider -->
+  <section class="showcase-section" id="showcase">
+    <div class="showcase-header">
+      <p class="section-tag">Pamperlang Range</p>
+      <h2 class="section-title">Our Product Range</h2>
+      <p class="section-sub">Tap any product to see more — WhatsApp Karin to place your order.</p>
+    </div>
+    <div class="showcase-wrap">
+      <button class="showcase-btn showcase-btn-prev" id="showcasePrev" aria-label="Previous">&#8592;</button>
+      <div class="showcase-outer">
+        <div class="showcase-track" id="showcaseTrack">
+          <div class="showcase-slide" data-product="R99 Week — Face Wash Gel 100ml, Toner met Witch Hazel 100ml, 2in1 Micellar 50ml, Hydro Boosting Face Cream 50g: R99 elk (20-26 Julie)"><img src="r99-week-facial.jpeg" alt="R99 Week — Gesigsorg produkte R99 elk"></div>
+          <div class="showcase-slide" data-product="R99 Week — Al ons 10ml rollertjies afgemerk na R99 per roller (20-26 Julie)"><img src="r99-week-rollers.jpeg" alt="R99 Week — 10ml Rollers R99 elk"></div>
+          <div class="showcase-slide" data-product="R99 Week — 200ml Room &amp; Linen Spray R99 elk (20-26 Julie)"><img src="r99-week-room-linen.jpeg" alt="R99 Week — Room &amp; Linen Spray R99"></div>
+          <div class="showcase-slide" data-product="R99 Week — 50g Heel Balm met Rooibos ekstrak R99 elk (20-26 Julie)"><img src="r99-week-heel-balm.jpeg" alt="R99 Week — Heel Balm R99"></div>
+          <div class="showcase-slide" data-product="R99 Week — 50g Coffee &amp; Salt Body and Feet Scrub R99 elk (20-26 Julie)"><img src="r99-week-scrub.jpeg" alt="R99 Week — Coffee &amp; Salt Scrub R99"></div>
+          <div class="showcase-slide" data-product="Jou liggaam is nie gemaak vir Toxic Overload nie — kies natuurlik met Pamperlang"><img src="toxic-overload-natural-choice.jpeg" alt="Toxic Overload — A Natural Choice met Pamperlang"></div>
+          <div class="showcase-slide" data-product="Vel Bederf Pakkie — Velsorg Combo R350, terwyl voorraad hou"><img src="vel-bederf-pakkie.jpeg" alt="Vel Bederf Pakkie — R350 Combo"></div>
+          <div class="showcase-slide" data-product="Sugar Free Collagen Hot Chocolate — nuut! Suikervry, hoog in veselinhoud en proteïen"><img src="winter-collagen-hot-chocolate-card.jpeg" alt="Sugar Free Collagen Hot Chocolate — Pamperlang"></div>
+          <div class="showcase-slide" data-product="Nuwe Sagte Vroulike Look — Nuwe Labels in Junie!"><img src="nuwe-velsorg-labels.jpeg" alt="Nuwe Pamperlang Labels"></div>
+        </div>
+      </div>
+      <button class="showcase-btn showcase-btn-next" id="showcaseNext" aria-label="Next">&#8594;</button>
+    </div>
+    <div class="showcase-progress-wrap">
+      <div class="showcase-progress-fill" id="showcaseProgress"></div>
+    </div>
+  </section>
+
+  <!-- Lightbox for product cards -->
+  <div class="showcase-lightbox" id="showcaseLightbox">
+    <button class="showcase-lb-close" id="showcaseLbClose">&times;</button>
+    <div class="showcase-lb-inner">
+      <img id="showcaseLbImg" src="" alt="Product detail">
+      <div class="showcase-lb-actions">
+        <div class="showcase-lb-actions-title">Ready to order?</div>
+        <div class="showcase-lb-actions-hint">WhatsApp Karin directly — or click below to view the product in the shop and add it to your cart.</div>
+        <div class="showcase-lb-btns">
+          <a id="showcaseLbOrderBtn" href="#" target="_blank" class="showcase-lb-order">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+            WhatsApp Karin
+          </a>
+          <button class="showcase-lb-shop" id="showcaseLbShop">View Product &amp; Add to Cart ↓</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nuwe Luukse Look Banner -->
+  <section class="promo-banner-section" id="nuwe-look" style="background: linear-gradient(135deg, #f7f3ec 0%, #fff 55%, #ede7da 100%);">
+    <div class="promo-banner-inner" style="max-width: 1050px;">
+      <img src="luukse-look-wide-banner.png" alt="Nuwe Luukse Look vir Pamperlang Skoonheid — in with the new, out with the old" class="promo-banner-img">
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section class="products" id="products">
+    <div class="text-center">
+      <p class="section-tag">The Full Range</p>
+      <h2 class="section-title">All Pamperlang Products</h2>
+      <p class="section-sub">Browse the full Pamperlang range and WhatsApp me to place your order — I'll handle the rest.</p>
+    </div>
+    <div class="category-tabs-wrap">
+      <div class="category-tabs">
+        <button class="tab-btn active" onclick="filterProducts('all', this)">All Products</button>
+        <button class="tab-btn" onclick="filterProducts('Bath & Body', this)">Bath & Body</button>
+        <button class="tab-btn" onclick="filterProducts('Facial Skincare', this)">Facial Skincare</button>
+        <button class="tab-btn" onclick="filterProducts('Handmade Soap', this)">Handmade Soap</button>
+        <button class="tab-btn" onclick="filterProducts('Health & Wellness', this)">Health & Wellness</button>
+        <button class="tab-btn" onclick="filterProducts('Kids Collection', this)">Kids Collection</button>
+        <button class="tab-btn" onclick="filterProducts('Men\'s Range', this)">Men's Range</button>
+        <button class="tab-btn" onclick="filterProducts('Hair Care', this)">Hair Care</button>
+        <button class="tab-btn" onclick="filterProducts('Room & Linen', this)">Room & Linen</button>
+        <button class="tab-btn" onclick="filterProducts('Perfumes', this)">Perfumes</button>
+        <button class="tab-btn" onclick="filterProducts('Combos & Gifts', this)">Combos & Gifts</button>
+      </div>
+    </div>
+    <div class="products-grid">
+
+      <!-- BATH & BODY -->
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/CINNAMON_BLOSSOM_BODY_WASH-thumbnail-600x600-95.jpg','Bath & Body','Body Wash','R69 – R169','A luxurious body wash enriched with Jojoba Oil and Glycerine — gentle on all skin types, men, women and children.','100ml / 200ml / 500ml','Jojoba Oil · Glycerine · Long-lasting fragrance · Gentle on all skin types',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R69'],['200ml','R99'],['500ml','R169']])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/CINNAMON_BLOSSOM_BODY_WASH-thumbnail-600x600-95.jpg" alt="Body Wash"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Body Wash</div>
+          <div class="product-desc">Luxurious body wash with Jojoba Oil and Glycerine — available in 11 beautiful fragrances.</div>
+          <div class="product-footer"><span class="product-price">R69 – R169</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/MILK__HONEY_LOTION-thumbnail-600x600-95.jpg','Bath & Body','Hand & Body Lotion','R69 – R169','Jojoba-enriched moisturiser that protects and hydrates your skin all day long.','100ml / 200ml / 500ml','Jojoba Oil · Deep Hydration · Non-greasy',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R69'],['200ml','R99'],['500ml','R169']])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/MILK__HONEY_LOTION-thumbnail-600x600-95.jpg" alt="Hand & Body Lotion"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Hand & Body Lotion</div>
+          <div class="product-desc">Jojoba-enriched moisturiser that protects and hydrates your skin all day long.</div>
+          <div class="product-footer"><span class="product-price">R69 – R169</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/ROSE_VANILLA_HAND_WASH-thumbnail-600x600-95.jpg','Bath & Body','Hand Wash','R69 – R169','Gentle hand wash with Jojoba Oil and Glycerine — suitable for the whole family.','100ml / 200ml / 500ml','Jojoba Oil · Glycerine · Gentle on skin',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'],[['100ml','R69'],['200ml','R99'],['500ml','R169']])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/ROSE_VANILLA_HAND_WASH-thumbnail-600x600-95.jpg" alt="Hand Wash"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Hand Wash</div>
+          <div class="product-desc">Gentle hand wash with Jojoba Oil and Glycerine — suitable for the whole family.</div>
+          <div class="product-footer"><span class="product-price">R69 – R169</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('product-card-05.jpeg','Bath & Body','Bath Crystals','R89 – R110','Luxury bath salts that stimulate circulation, ease muscle cramps, and relieve joint stiffness.','200gr / 500gr','Stimulates circulation · Eases muscle cramps · Deeply relaxing',['Rose','Lemongrass','Lavender','Vanilla','Activated Charcoal Lemongrass','Turmeric','Aloe Cucumber','Aqua','Pink Peony','Rooibos','Cinnamon Blossom','Rose Vanilla','Elegant Grapefruit'],[['200gr','R89'],['500gr','R110']])">
+        <div class="product-img"><img src="product-card-05.jpeg" alt="Bath Crystals"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Bath Crystals</div>
+          <div class="product-desc">Luxury bath salts — stimulate circulation and ease muscle cramps. 13 fragrances.</div>
+          <div class="product-footer"><span class="product-price">R89 – R110</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20240203-WA0037-thumbnail-600x600-95.jpg','Bath & Body','Bubble Bath','R75 – R120','Jojoba-enriched bubble bath — the perfect way to unwind at the end of a long day.','100ml / 500ml','Jojoba Oil · Rich bubbles · Relaxing',['Lavender','Rose','Vanilla','Pink Peony'],[['100ml','R75'],['500ml','R120']])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG-20240203-WA0037-thumbnail-600x600-95.jpg" alt="Bubble Bath"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Bubble Bath</div>
+          <div class="product-desc">Luxurious Jojoba-enriched bubble bath — the perfect way to unwind.</div>
+          <div class="product-footer"><span class="product-price">R75 – R120</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20260217-WA0013-thumbnail-600x600-95.jpg','Bath &amp; Body','Body Mist 100ml','R125','A light, beautiful fragrance mist to refresh and scent your skin all day long.','100ml','Light fragrance · Refreshing · All day scent',['Peony &amp; Blomme','Karamel &amp; Amber','Aloe &amp; Komkommer','Rooibos &amp; Vanilla','Vrugte'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG-20260217-WA0013-thumbnail-600x600-95.jpg" alt="Body Mist"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Body Mist 100ml</div>
+          <div class="product-desc">Light fragrance mist to refresh and scent your skin — 5 beautiful scents.</div>
+          <div class="product-footer"><span class="product-price">R125</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('product-card-37.jpeg','Bath &amp; Body','Rooibos Revive Butter 200g','R175','Rich rooibos-infused body butter — deeply nourishing and freshly prepared per order.','200g','Rooibos Extract · Deep hydration · Freshly made per order')">
+        <div class="product-img"><img src="product-card-37.jpeg" alt="Rooibos Butter"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Rooibos Revive Butter 200g</div>
+          <div class="product-desc">Rich rooibos-infused body butter — deeply nourishing, freshly made per order.</div>
+          <div class="product-footer"><span class="product-price">R175</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('product-card-35.jpeg','Bath &amp; Body','Cuticle &amp; Nail Growth Roller 10ml','R129','Roll-on treatment to promote nail growth and nourish cuticles — easy to apply anytime.','10ml roller','Nail growth · Cuticle care · Easy roll-on application')">
+        <div class="product-img"><img src="product-card-35.jpeg" alt="Cuticle Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <div class="product-name">Cuticle & Nail Growth Roller 10ml</div>
+          <div class="product-desc">Roll-on treatment to promote nail growth and nourish cuticles.</div>
+          <div class="product-footer"><span class="product-price">R129</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Bath & Body" onclick="openModal('product-card-41.jpeg','Bath &amp; Body','Fragrance Free Coffee &amp; Salt Scrub with Rosemary 50gr','R99 (normally R115)','Fragrance-free coffee and salt body scrub with Rosemary — improves circulation, reduces cellulite appearance and removes dead skin cells. Suitable for sensitive skin.','50gr','Coffee grounds · Salt · Rosemary · Fragrance-free · Exfoliating · Sensitive skin')">
+        <div class="product-img"><img src="product-card-41.jpeg" alt="Coffee Salt Scrub"/></div>
+        <div class="product-info">
+          <div class="product-category">Bath & Body</div>
+          <span class="special-badge">✨ R99 Week</span>
+          <div class="product-name">Fragrance Free Coffee &amp; Salt Scrub with Rosemary 50gr</div>
+          <div class="product-desc">Coffee and salt scrub with Rosemary — removes dead skin cells and improves circulation.</div>
+          <div class="product-footer"><span class="product-price">R99 <s style="opacity:.55;font-weight:400;font-size:.85em">R115</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- FACIAL SKINCARE -->
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-29.jpeg','Facial Skincare','Lip Balm 15g','R50','Handcrafted lip balm with Coconut Oil, Beeswax, and Castor Oil — soft lips all day.','15g tin','Coconut Oil · Beeswax · Castor Oil · Natural',['Milk & Honey','Grape','Vanilla','Spearmint','Coco Butter','Marshmallow'])">
+        <div class="product-img"><img src="product-card-29.jpeg" alt="Lip Balm"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Lip Balm</div>
+          <div class="product-desc">Handcrafted with Coconut Oil and Beeswax — 6 delicious flavours.</div>
+          <div class="product-footer"><span class="product-price">R50</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('face-wash-gel-card.jpeg','Facial Skincare','Face Wash Gel 100ml','R99 (normally R159)','SLS-free with 3% Niacinamide and Liquorice Extract — brightens and gently cleanses.','100ml','SLS-free · 3% Niacinamide · Brightening')">
+        <div class="product-img"><img src="face-wash-gel-card.jpeg" alt="Face Wash Gel"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <span class="special-badge">✨ R99 Week</span>
+          <div class="product-name">Face Wash Gel 100ml</div>
+          <div class="product-desc">SLS-free with 3% Niacinamide and Liquorice Extract — brightens and gently cleanses.</div>
+          <div class="product-footer"><span class="product-price">R99 <s style="opacity:.55;font-weight:400;font-size:.85em">R159</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('hydro-face-cream-card.jpeg','Facial Skincare','Hydro Boosting & Anti Aging Face Cream 50g','R99 (normally R229)','Fragrance-free with 1.5% Hyaluronic Acid, Niacinamide, and Squalane — deeply hydrating and anti-aging.','50g','Hyaluronic Acid · Niacinamide · Squalane · Fragrance-free')">
+        <div class="product-img"><img src="hydro-face-cream-card.jpeg" alt="Hydro Boosting & Anti Aging Face Cream"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <span class="special-badge">✨ R99 Week</span>
+          <div class="product-name">Hydro Boosting & Anti Aging Face Cream 50g</div>
+          <div class="product-desc">Fragrance-free anti-aging moisturiser with Hyaluronic Acid and Squalane.</div>
+          <div class="product-footer"><span class="product-price">R99 <s style="opacity:.55;font-weight:400;font-size:.85em">R229</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-23.jpeg','Facial Skincare','Facial Toner with Witch Hazel 100ml','R99 (normally R159)','Anti-aging toner with Vitamin B3 and Witch Hazel — reduces dark marks and tightens pores.','100ml','Witch Hazel · Vitamin B3 · Reduces dark marks')">
+        <div class="product-img"><img src="product-card-23.jpeg" alt="Facial Toner"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <span class="special-badge">✨ R99 Week</span>
+          <div class="product-name">Facial Toner with Witch Hazel</div>
+          <div class="product-desc">Vitamin B3 and Witch Hazel — reduces dark marks and tightens pores.</div>
+          <div class="product-footer"><span class="product-price">R99 <s style="opacity:.55;font-weight:400;font-size:.85em">R159</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-24.jpeg','Facial Skincare','Wrinkle Filler Serum 30ml','R249','1.5% Hyaluronic Acid serum — plumps skin and visibly reduces fine lines and wrinkles.','30ml','Hyaluronic Acid · Glycerine · Reduces wrinkles')">
+        <div class="product-img"><img src="product-card-24.jpeg" alt="Wrinkle Serum"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Wrinkle Filler Serum 30ml</div>
+          <div class="product-desc">1.5% Hyaluronic Acid — plumps skin and visibly reduces fine lines.</div>
+          <div class="product-footer"><span class="product-price">R249</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('collagen-day-night-cream-card.jpeg','Facial Skincare','Collagen Day / Night Cream','R245','Collagen Peptides with Hyaluronic Acid and Squalane — firms and deeply hydrates day and night.','50ml','Collagen Peptides · Hyaluronic Acid · Squalane')">
+        <div class="product-img"><img src="collagen-day-night-cream-card.jpeg" alt="Collagen Day/Night Cream"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Collagen Day / Night Cream</div>
+          <div class="product-desc">Collagen Peptides with Hyaluronic Acid — firms and hydrates day and night.</div>
+          <div class="product-footer"><span class="product-price">R245</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('collagen-eye-cream-card.jpeg','Facial Skincare','Collagen Eye Cream','R220','Specialised collagen eye treatment — firms the eye area and makes wrinkles visibly less noticeable.','15ml','Collagen · Firms eye area · Reduces fine lines')">
+        <div class="product-img"><img src="collagen-eye-cream-card.jpeg" alt="Collagen Eye Cream"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Collagen Eye Cream</div>
+          <div class="product-desc">Collagen eye treatment — firms the eye area and reduces visible wrinkles.</div>
+          <div class="product-footer"><span class="product-price">R220</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-27.jpeg','Facial Skincare','Natural Vit C Glow Serum 30ml','R279','Vitamin C and Hyaluronic Acid — evens skin tone and boosts radiance.','30ml','Vitamin C · Hyaluronic Acid · Brightening · Radiance')">
+        <div class="product-img"><img src="product-card-27.jpeg" alt="Vitamin C Serum"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Natural Vit C Glow Serum 30ml</div>
+          <div class="product-desc">Vitamin C and Hyaluronic Acid — evens skin tone and boosts radiance.</div>
+          <div class="product-footer"><span class="product-price">R279</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-22.jpeg','Facial Skincare','Tissue Oil for Face & Body 50ml','R160','Jojoba-based nourishing oil — reduces stretch marks, scars, and uneven skin tone.','50ml','Jojoba Oil · Reduces stretch marks · Multi-use')">
+        <div class="product-img"><img src="product-card-22.jpeg" alt="Tissue Oil"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Tissue Oil for Face & Body 50ml</div>
+          <div class="product-desc">Jojoba-based oil — reduces stretch marks, scars, and uneven skin tone.</div>
+          <div class="product-footer"><span class="product-price">R160</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('micellar-toner-card.jpeg','Facial Skincare','2-in-1 Micellar Water &amp; Toner 50ml','R99 (normally R180)','Frankincense and Jojoba Oil — gently cleanses, removes makeup and balances skin pH in one step.','50ml','Frankincense · Jojoba Oil · Gentle cleansing · pH balancing')">
+        <div class="product-img"><img src="micellar-toner-card.jpeg" alt="Micellar Water & Toner"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <span class="special-badge">✨ R99 Week</span>
+          <div class="product-name">2-in-1 Micellar Water & Toner 50ml</div>
+          <div class="product-desc">Frankincense and Jojoba Oil — cleanses, removes makeup and balances skin pH.</div>
+          <div class="product-footer"><span class="product-price">R99 <s style="opacity:.55;font-weight:400;font-size:.85em">R180</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-21.jpeg','Facial Skincare','Natural Retinol 30ml','R249','Natural retinol with Jojoba and Bakuchiol — anti-aging benefits without the harshness of synthetic retinol.','30ml','Bakuchiol · Jojoba Oil · Anti-aging · Gentle formula')">
+        <div class="product-img"><img src="product-card-21.jpeg" alt="Natural Retinol"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Natural Retinol 30ml</div>
+          <div class="product-desc">Bakuchiol and Jojoba Oil — anti-aging benefits without the harshness of synthetic retinol.</div>
+          <div class="product-footer"><span class="product-price">R249</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('https://media.portmoni.com/resized/69614/ACNE_CREAM-thumbnail-600x600-95.jpg','Facial Skincare','Acne Cream with Tea Tree Oil 50g','R165','Ichthyol, Vitamin B3 and Hyaluronic Acid — targets acne and blemishes while keeping skin hydrated.','50g','Tea Tree Oil · Ichthyol · Vitamin B3 · Hyaluronic Acid')">
+        <div class="product-img"><img src="product-card-15.jpeg" alt="Acne Cream"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Acne Cream with Tea Tree Oil 50g</div>
+          <div class="product-desc">Vitamin B3 and Tea Tree Oil — targets acne and blemishes while keeping skin hydrated.</div>
+          <div class="product-footer"><span class="product-price">R165</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('https://media.portmoni.com/resized/69614/CELLULITE_CREAM_-thumbnail-600x600-95.jpg','Facial Skincare','Cellulite Cream 50g','R159','Caffeine-enriched cream to enhance circulation and tighten the appearance of skin.','50g','Caffeine · Enhanced circulation · Skin tightening')">
+        <div class="product-img"><img src="product-card-16.jpeg" alt="Cellulite Cream"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Cellulite Cream 50g</div>
+          <div class="product-desc">Caffeine-enriched cream to enhance circulation and tighten the appearance of skin.</div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('natural-botox-card.jpeg','Facial Skincare','Natural Botox Roller 10ml','R99 (normally R159)','Castor Oil, Jojoba Oil and Frankincense — smooths fine lines and firms skin naturally.','10ml roller','Castor Oil · Jojoba Oil · Frankincense · Anti-wrinkle')">
+        <div class="product-img"><img src="natural-botox-card.jpeg" alt="Natural Botox Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <span class="special-badge">✨ R99 Week</span>
+          <div class="product-name">Natural Botox Roller 10ml</div>
+          <div class="product-desc">Castor Oil, Jojoba and Frankincense — smooths fine lines and firms skin naturally.</div>
+          <div class="product-footer"><span class="product-price">R99 <s style="opacity:.55;font-weight:400;font-size:.85em">R159</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-26.jpeg','Facial Skincare','Rose Water 50ml','R89','Pure organic alcohol-free rose hydrosol — refreshes, soothes and tones skin naturally.','50ml','Pure Rose Hydrosol · Alcohol-free · Natural toner')">
+        <div class="product-img"><img src="product-card-26.jpeg" alt="Rose Water"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Rose Water 50ml</div>
+          <div class="product-desc">Pure organic alcohol-free rose hydrosol — refreshes, soothes and tones naturally.</div>
+          <div class="product-footer"><span class="product-price">R89</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-28.jpeg','Facial Skincare','Facial Scrub 50g','R169','Lavender and Rose Geranium exfoliating scrub — removes dead skin cells and reveals a natural glow.','50g','Lavender · Rose Geranium · Hyaluronic Acid · Exfoliating')">
+        <div class="product-img"><img src="product-card-28.jpeg" alt="Facial Scrub"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <div class="product-name">Facial Scrub 50g</div>
+          <div class="product-desc">Lavender and Rose Geranium — removes dead skin cells and reveals a natural glow.</div>
+          <div class="product-footer"><span class="product-price">R169</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Facial Skincare" onclick="openModal('product-card-25.jpeg','Facial Skincare','Acne Roller 10ml','R99 (normally R159)','Tea Tree and Lavender essential oils in a convenient roll-on — targeted treatment for blemishes on the go.','10ml roller','Tea Tree Oil · Lavender · Targeted treatment · On-the-go')">
+        <div class="product-img"><img src="product-card-25.jpeg" alt="Acne Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Facial Skincare</div>
+          <span class="special-badge">✨ R99 Week</span>
+          <div class="product-name">Acne Roller 10ml</div>
+          <div class="product-desc">Tea Tree and Lavender in a roll-on — targeted blemish treatment on the go.</div>
+          <div class="product-footer"><span class="product-price">R99 <s style="opacity:.55;font-weight:400;font-size:.85em">R159</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- HANDMADE SOAP -->
+      <div class="product-card" data-category="Handmade Soap" onclick="openModal('product-card-04.jpeg','Handmade Soap','Activated Charcoal Soap','R70 – R89','Controls oiliness and removes impurities from pores. Available in 100gr and 150gr.','100gr / 150gr','Activated Charcoal · Deep pore cleansing · Antibacterial',null,[['100gr','R70'],['150gr','R89']])">
+        <div class="product-img"><img src="product-card-04.jpeg" alt="Charcoal Soap"/></div>
+        <div class="product-info">
+          <div class="product-category">Handmade Soap</div>
+          <div class="product-name">Activated Charcoal Soap</div>
+          <div class="product-desc">Deep pore cleansing — controls oiliness and removes impurities.</div>
+          <div class="product-footer"><span class="product-price">R70 – R89</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Handmade Soap" onclick="openModal('product-card-03.jpeg','Handmade Soap','Turmeric Soap','R70 – R89','Plant-based artisan soap with anti-inflammatory benefits — reduces redness and soothes skin.','100gr / 150gr','Turmeric · Anti-inflammatory · Antibacterial',null,[['100gr','R70'],['150gr','R89']])">
+        <div class="product-img"><img src="product-card-03.jpeg" alt="Turmeric Soap"/></div>
+        <div class="product-info">
+          <div class="product-category">Handmade Soap</div>
+          <div class="product-name">Turmeric Soap</div>
+          <div class="product-desc">Anti-inflammatory artisan soap — reduces redness and soothes irritated skin.</div>
+          <div class="product-footer"><span class="product-price">R70 – R89</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Handmade Soap" onclick="openModal('https://media.portmoni.com/resized/69614/BOERSEEP-thumbnail-600x600-95.jpg','Handmade Soap','Boerseep','R65','Traditional South African heritage soap — gentle, pure, and deeply cleansing.','Bar','Traditional recipe · Heritage · Gentle & pure')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/BOERSEEP-thumbnail-600x600-95.jpg" alt="Boerseep"/></div>
+        <div class="product-info">
+          <div class="product-category">Handmade Soap</div>
+          <div class="product-name">Boerseep</div>
+          <div class="product-desc">Traditional South African heritage soap — gentle, pure, and deeply cleansing.</div>
+          <div class="product-footer"><span class="product-price">R65</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- HAIR CARE -->
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-07.jpeg','Hair Care','Activated Charcoal Shampoo','R89 – R105','SLS-free shampoo with activated charcoal and natural essential oils — deep cleanses without stripping.','100ml / 200ml','Activated Charcoal · SLS-free · Natural essential oils',null,[['100ml','R89'],['200ml','R105']])">
+        <div class="product-img"><img src="product-card-07.jpeg" alt="Charcoal Shampoo"/></div>
+        <div class="product-info">
+          <div class="product-category">Hair Care</div>
+          <div class="product-name">Activated Charcoal Shampoo</div>
+          <div class="product-desc">SLS-free with activated charcoal — deep cleanses without stripping your hair.</div>
+          <div class="product-footer"><span class="product-price">R89 – R105</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-07.jpeg','Hair Care','Activated Charcoal Conditioner','R89 – R105','Hyaluronic Acid conditioner — maintains moisture, combats dandruff and leaves hair shiny.','100ml / 200ml','Activated Charcoal · Hyaluronic Acid · Anti-dandruff · Moisture',null,[['100ml','R89'],['200ml','R105']])">
+        <div class="product-img"><img src="product-card-07.jpeg" alt="Charcoal Conditioner"/></div>
+        <div class="product-info">
+          <div class="product-category">Hair Care</div>
+          <div class="product-name">Activated Charcoal Conditioner</div>
+          <div class="product-desc">Hyaluronic Acid conditioner — maintains moisture and combats dandruff.</div>
+          <div class="product-footer"><span class="product-price">R89 – R105</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-08.jpeg','Hair Care','2-in-1 Conditioning Shampoo','R79 – R99','Jojoba-enriched shampoo and conditioner in one — gentle and moisturising for all hair types.','100ml / 200ml','Jojoba Oil · 2-in-1 formula · All hair types',['Orange Lavender','Aloe Cucumber','Elegant Grapefruit','Rooibos'],[['100ml','R79'],['200ml','R99']])">
+        <div class="product-img"><img src="product-card-08.jpeg" alt="2-in-1 Shampoo"/></div>
+        <div class="product-info">
+          <div class="product-category">Hair Care</div>
+          <div class="product-name">2-in-1 Conditioning Shampoo</div>
+          <div class="product-desc">Jojoba-enriched shampoo and conditioner in one — 4 fragrances available.</div>
+          <div class="product-footer"><span class="product-price">R79 – R99</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-09.jpeg','Hair Care','Collagen &amp; Keratin Shampoo','R105 – R125','Strengthening shampoo with Collagen and Keratin — repairs, strengthens and adds shine.','100ml / 200ml','Collagen · Keratin · Strengthening · Shine',null,[['100ml','R105'],['200ml','R125']])">
+        <div class="product-img"><img src="product-card-09.jpeg" alt="Collagen Keratin Shampoo"/></div>
+        <div class="product-info">
+          <div class="product-category">Hair Care</div>
+          <div class="product-name">Collagen & Keratin Shampoo</div>
+          <div class="product-desc">Collagen and Keratin — repairs, strengthens and adds beautiful shine.</div>
+          <div class="product-footer"><span class="product-price">R105 – R125</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-09.jpeg','Hair Care','Collagen &amp; Keratin Conditioner','R105 – R125','Pairs with the Collagen &amp; Keratin Shampoo — deep repair and strengthening conditioner.','100ml / 200ml','Collagen · Keratin · Deep repair · Strengthening',null,[['100ml','R105'],['200ml','R125']])">
+        <div class="product-img"><img src="product-card-09.jpeg" alt="Collagen Keratin Conditioner"/></div>
+        <div class="product-info">
+          <div class="product-category">Hair Care</div>
+          <div class="product-name">Collagen & Keratin Conditioner</div>
+          <div class="product-desc">Pairs with the shampoo — deep repair and strengthening conditioner.</div>
+          <div class="product-footer"><span class="product-price">R105 – R125</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Hair Care" onclick="openModal('product-card-01.jpeg','Hair Care','Hair Growth Oil 50ml','R189','Castor Oil, Jojoba Oil and organic essential oils — promotes hair growth and nourishes the scalp.','50ml','Castor Oil · Jojoba Oil · Lavender · Peppermint · Rosemary')">
+        <div class="product-img"><img src="product-card-01.jpeg" alt="Hair Growth Oil"/></div>
+        <div class="product-info">
+          <div class="product-category">Hair Care</div>
+          <div class="product-name">Hair Growth Oil 50ml</div>
+          <div class="product-desc">Castor Oil, Jojoba and essential oils — promotes hair growth and nourishes the scalp.</div>
+          <div class="product-footer"><span class="product-price">R189</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- HEALTH & WELLNESS -->
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-38.jpeg','Health & Wellness','Muscle Rub','R115 – R159','Soothing muscle rub with Methyl Salicylate and Menthol — fast relief for aching muscles.','50gr / 100gr','Methyl Salicylate · Menthol · Fast-acting',null,[['50gr','R115'],['100gr','R159']])">
+        <div class="product-img"><img src="product-card-38.jpeg" alt="Muscle Rub"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Muscle Rub</div>
+          <div class="product-desc">Fast relief for aching muscles — Methyl Salicylate and Menthol. 50gr and 100gr.</div>
+          <div class="product-footer"><span class="product-price">R115 – R159</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-18.jpeg','Health & Wellness','Castor Oil','R69 – R139','A miracle multi-use oil — promotes hair growth, moisturises skin, and nourishes nails.','50ml / 100ml / 200ml','Pure Castor Oil · Hair growth · Skin · Nails',null,[['50ml','R69'],['100ml','R99'],['200ml','R139']])">
+        <div class="product-img"><img src="product-card-18.jpeg" alt="Castor Oil"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Castor Oil</div>
+          <div class="product-desc">Multi-use miracle oil — promotes hair growth, moisturises skin and nails.</div>
+          <div class="product-footer"><span class="product-price">R69 – R139</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-38.jpeg','Health & Wellness','Pain & Inflammation Oil 50ml','R149','Methyl Salicylate and Menthol Crystals — fast effective relief for muscle and joint pain.','50ml','Methyl Salicylate · Menthol Crystals · Pain relief')">
+        <div class="product-img"><img src="product-card-38.jpeg" alt="Pain Oil"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Pain & Inflammation Oil 50ml</div>
+          <div class="product-desc">Fast effective relief for muscle and joint pain.</div>
+          <div class="product-footer"><span class="product-price">R149</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('winter-collagen-hot-chocolate-card.jpeg','Health &amp; Wellness','Sugar Free Collagen Hot Chocolate','R169 (normally R189)','A delicious, creamy hot chocolate sweetened without sugar and packed with fibre and protein. Supports skin health, joint function and overall vitality.','200g','Sugar free · Reduced calories · High fibre · Collagen protein · Gluten free')">
+        <div class="product-img"><img src="winter-collagen-hot-chocolate-card.jpeg" alt="Sugar Free Collagen Hot Chocolate"/></div>
+        <div class="product-info">
+          <div class="product-category">Health &amp; Wellness</div>
+          <span class="special-badge">✨ New — On Special</span>
+          <div class="product-name">Sugar Free Collagen Hot Chocolate</div>
+          <div class="product-desc">Creamy sugar-free hot chocolate with collagen — supports skin, joints and vitality.</div>
+          <div class="product-footer"><span class="product-price">R169 <s style="opacity:.55;font-weight:400;font-size:.85em">R189</s></span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-36.jpeg','Health & Wellness','Stress Drops','R220','Herbal drops to reduce stress, anxiety, restlessness, and support better sleep.','30ml drops','Herbal formula · Reduces stress · Aids sleep')">
+        <div class="product-img"><img src="product-card-36.jpeg" alt="Stress Drops"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Stress Drops</div>
+          <div class="product-desc">Herbal drops to reduce stress, anxiety, and support better sleep.</div>
+          <div class="product-footer"><span class="product-price">R220</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('collagen-powder-capsules-photo.jpeg','Health & Wellness','Collagen Powder 150g','R320','Promotes healthy hair, nails, joints, and bone density — add to your daily smoothie or coffee.','150g','Pure Collagen · Hair & nails · Joint support · Bone density')">
+        <div class="product-img"><img src="collagen-powder-capsules-photo.jpeg" alt="Collagen Powder"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Collagen Powder 150g</div>
+          <div class="product-desc">Promotes healthy hair, nails, joints, and bone density.</div>
+          <div class="product-footer"><span class="product-price">R320</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-40.jpeg','Health &amp; Wellness','Heel &amp; Elbow Balm 50gr','R115','20% Urea with Coconut, Argan and Shea Butter — intensely softens cracked heels and rough elbows.','50gr','20% Urea · Coconut Oil · Argan Oil · Shea Butter')">
+        <div class="product-img"><img src="product-card-40.jpeg" alt="Heel & Elbow Balm"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Heel & Elbow Balm 50gr</div>
+          <div class="product-desc">20% Urea with Argan and Shea Butter — intensely softens cracked heels and elbows.</div>
+          <div class="product-footer"><span class="product-price">R115</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-33.jpeg','Health &amp; Wellness','Cortisol Herbal Support Drops','R220','Herbal drops to regulate cortisol levels, reduce stress and support a healthy stress response.','30ml drops','Herbal formula · Cortisol regulation · Stress support')">
+        <div class="product-img"><img src="product-card-33.jpeg" alt="Cortisol Drops"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Cortisol Herbal Support Drops</div>
+          <div class="product-desc">Herbal drops to regulate cortisol levels and support a healthy stress response.</div>
+          <div class="product-footer"><span class="product-price">R220</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-42.jpeg','Health &amp; Wellness','Herbal Immune Care Drops','R220','Echinacea-based herbal support for colds, flu, sinus and respiratory problems.','30ml drops','Echinacea · Immune support · Cold &amp; flu · Respiratory')">
+        <div class="product-img"><img src="product-card-42.jpeg" alt="Immune Drops"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Herbal Immune Care Drops</div>
+          <div class="product-desc">Echinacea herbal drops — immune support for colds, flu, sinus and respiratory problems.</div>
+          <div class="product-footer"><span class="product-price">R220</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-30.jpeg','Health &amp; Wellness','Hunger Stop 60 Capsules','R219','Pure Hoodia Gordonii — natural appetite suppressant for weight management. Take 30 min before meals.','60 capsules','Hoodia Gordonii · Natural · Appetite suppressant · Weight management')">
+        <div class="product-img"><img src="product-card-30.jpeg" alt="Hunger Stop"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Hunger Stop 60 Capsules</div>
+          <div class="product-desc">Pure Hoodia Gordonii — natural appetite suppressant for weight management.</div>
+          <div class="product-footer"><span class="product-price">R219</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-43.jpeg','Health &amp; Wellness','Fat Burn','R195','Concentrated green tea extract — natural fat burner to support your weight management journey.','Capsules','Green Tea Extract · Natural fat burner · Weight management')">
+        <div class="product-img"><img src="product-card-43.jpeg" alt="Fat Burn"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Fat Burn</div>
+          <div class="product-desc">Concentrated green tea extract — natural fat burner to support weight management.</div>
+          <div class="product-footer"><span class="product-price">R195</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-34.jpeg','Health &amp; Wellness','Monalisa — Female Hormone Support','R220','Herbal drops for menopause, peri-menopause, PMS and female hormone balance.','30ml drops','Herbal formula · Hormone balance · Menopause · PMS support')">
+        <div class="product-img"><img src="product-card-34.jpeg" alt="Monalisa"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Monalisa — Female Hormone Support</div>
+          <div class="product-desc">Herbal drops for menopause, peri-menopause, PMS and female hormone balance.</div>
+          <div class="product-footer"><span class="product-price">R220</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-45.jpeg','Health &amp; Wellness','Anxiety &amp; Headache Buster Roller 10ml','R132','Aromatherapy roll-on for instant relief from anxiety and headaches — apply to temples or wrists.','10ml roller','Aromatherapy blend · Headache relief · Anxiety · On-the-go')">
+        <div class="product-img"><img src="product-card-45.jpeg" alt="Anxiety Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Anxiety & Headache Buster Roller 10ml</div>
+          <div class="product-desc">Aromatherapy roll-on for instant relief from anxiety and headaches.</div>
+          <div class="product-footer"><span class="product-price">R132</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-12.jpeg','Health &amp; Wellness','Sinus &amp; Congestion Roller 10ml','R99','Eucalyptus and Peppermint roll-on — fast nasal and sinus relief you can carry anywhere.','10ml roller','Eucalyptus · Peppermint · Sinus relief · Nasal support')">
+        <div class="product-img"><img src="product-card-12.jpeg" alt="Sinus Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Sinus & Congestion Roller 10ml</div>
+          <div class="product-desc">Eucalyptus and Peppermint — fast nasal and sinus relief in a convenient roll-on.</div>
+          <div class="product-footer"><span class="product-price">R99</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-11.jpeg','Health &amp; Wellness','Chest Vapor Rub 50g','R110','Eucalyptus, Peppermint and Tea Tree Oil — soothing chest rub for coughs and easier breathing.','50g glass jar','Eucalyptus · Peppermint · Tea Tree Oil · Cough relief')">
+        <div class="product-img"><img src="product-card-11.jpeg" alt="Chest Vapor Rub 50g"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Chest Vapor Rub 50g</div>
+          <div class="product-desc">Eucalyptus, Peppermint and Tea Tree Oil — soothing rub for coughs and easier breathing.</div>
+          <div class="product-footer"><span class="product-price">R110</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Health & Wellness" onclick="openModal('product-card-11.jpeg','Health &amp; Wellness','Chest Vapor Rub 15g','R59','Pocket-sized Eucalyptus, Peppermint and Tea Tree Oil chest rub — perfect for handbag or travel.','15g tin','Eucalyptus · Peppermint · Tea Tree Oil · Travel size')">
+        <div class="product-img"><img src="product-card-11.jpeg" alt="Chest Vapor Rub 15g"/></div>
+        <div class="product-info">
+          <div class="product-category">Health & Wellness</div>
+          <div class="product-name">Chest Vapor Rub 15g</div>
+          <div class="product-desc">Pocket-sized chest rub — perfect for handbag or travel.</div>
+          <div class="product-footer"><span class="product-price">R59</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- KIDS COLLECTION -->
+      <div class="product-card" data-category="Kids Collection" onclick="openModal('https://media.portmoni.com/resized/69614/LIP_BALM_GROUP-thumbnail-600x600-95.jpg','Kids Collection','Kids Lip Balm','R50','Fun and nourishing lip balm for little ones — gentle, natural ingredients safe for children.','15g tin','Natural ingredients · Gentle on kids · Safe for children',['Strawberry','Bubblegum'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/LIP_BALM_GROUP-thumbnail-600x600-95.jpg" alt="Kids Lip Balm"/></div>
+        <div class="product-info">
+          <div class="product-category">Kids Collection</div>
+          <div class="product-name">Kids Lip Balm</div>
+          <div class="product-desc">Fun and nourishing lip balm for little ones — gentle and safe for children.</div>
+          <div class="product-footer"><span class="product-price">R50</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Kids Collection" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20241029-WA0061-thumbnail-600x600-95.jpg','Kids Collection','Kids Strawberry Range','R50 – R329','Strawberry-scented body wash, lotion, bubble bath, and lip balm — gentle and fun for kids.','100ml / 200ml','Strawberry scented · Gentle on kids skin · Safe')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG-20241029-WA0061-thumbnail-600x600-95.jpg" alt="Kids Strawberry"/></div>
+        <div class="product-info">
+          <div class="product-category">Kids Collection</div>
+          <div class="product-name">Kids Strawberry Range</div>
+          <div class="product-desc">Strawberry-scented body wash, lotion, bubble bath & lip balm — gentle for kids.</div>
+          <div class="product-footer"><span class="product-price">R50 – R329</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Kids Collection" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20241029-WA0062-thumbnail-600x600-95.jpg','Kids Collection','Kids Bubblegum Range','R50 – R329','Bubblegum-scented body wash, lotion, bubble bath, and lip balm — loved by little ones.','100ml / 200ml','Bubblegum scented · Gentle on kids skin · Safe')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG-20241029-WA0062-thumbnail-600x600-95.jpg" alt="Kids Bubblegum"/></div>
+        <div class="product-info">
+          <div class="product-category">Kids Collection</div>
+          <div class="product-name">Kids Bubblegum Range</div>
+          <div class="product-desc">Bubblegum-scented body wash, lotion, bubble bath & lip balm — loved by little ones.</div>
+          <div class="product-footer"><span class="product-price">R50 – R329</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Kids Collection" onclick="openModal('product-card-39.jpeg','Kids Collection','Kiddies Calm & Sleep Roller','R129','Gentle calming roller to help little ones relax and sleep — safe and easy to apply.','10ml roller','Calming blend · Supports sleep · Safe for children')">
+        <div class="product-img"><img src="product-card-39.jpeg" alt="Calm Roller"/></div>
+        <div class="product-info">
+          <div class="product-category">Kids Collection</div>
+          <div class="product-name">Kiddies Calm & Sleep Roller</div>
+          <div class="product-desc">Gentle calming roller to help little ones relax and sleep better.</div>
+          <div class="product-footer"><span class="product-price">R129</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- MEN'S RANGE -->
+      <div class="product-card" data-category="Men's Range" onclick="openModal('https://media.portmoni.com/resized/69614/BEARD_OIL-thumbnail-600x600-95.jpg','Men\'s Range','Die Legende Beard Oil 30ml','R145','Premium beard oil with Jojoba, Argan, Rosehip, and Grapeseed oils — grooming and hydration for men.','30ml','Jojoba Oil · Argan Oil · Rosehip Oil · Grapeseed Oil')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/BEARD_OIL-thumbnail-600x600-95.jpg" alt="Beard Oil"/></div>
+        <div class="product-info">
+          <div class="product-category">Men's Range</div>
+          <div class="product-name">Die Legende Beard Oil 30ml</div>
+          <div class="product-desc">Premium beard oil — grooming, hydration and style for men.</div>
+          <div class="product-footer"><span class="product-price">R145</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Men's Range" onclick="openModal('https://media.portmoni.com/resized/69614/HAND__BODY_LOTION-thumbnail-600x600-95.jpg','Men\'s Range','Die Legende Hand & Body Lotion','R99','Premium Jojoba-enriched lotion from the Legends collection — crafted for men who care.','200ml','Jojoba Oil · Deep hydration · Non-greasy',null,[['200ml','R99']])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/HAND__BODY_LOTION-thumbnail-600x600-95.jpg" alt="Die Legende Lotion"/></div>
+        <div class="product-info">
+          <div class="product-category">Men's Range</div>
+          <div class="product-name">Die Legende Hand & Body Lotion</div>
+          <div class="product-desc">Premium Jojoba-enriched lotion from the Legends collection.</div>
+          <div class="product-footer"><span class="product-price">R99</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Men's Range" onclick="openModal('https://media.portmoni.com/resized/69614/HAIR__BODY_WASH-thumbnail-600x600-95.jpg','Men\'s Range','Die Legende Hair &amp; Body Wash 200ml','R135','Luxury Jojoba-enriched all-in-one hair and body wash for men — in the signature AQUA scent.','200ml','Jojoba Oil · Glycerin · All-in-one · AQUA scent')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/HAIR__BODY_WASH-thumbnail-600x600-95.jpg" alt="Die Legende Hair & Body Wash"/></div>
+        <div class="product-info">
+          <div class="product-category">Men's Range</div>
+          <div class="product-name">Die Legende Hair & Body Wash 200ml</div>
+          <div class="product-desc">Jojoba-enriched all-in-one hair and body wash — signature AQUA scent for men.</div>
+          <div class="product-footer"><span class="product-price">R135</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Men's Range" onclick="openModal('https://media.portmoni.com/resized/69614/AFTERSHAVE-thumbnail-600x600-95.jpg','Men\'s Range','Die Legende Aftershave Cream 100ml','R185','Tea Tree Oil and natural essential oils — antibacterial aftershave that soothes and protects skin.','100ml','Tea Tree Oil · Natural Essential Oils · Antibacterial · Soothing')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/AFTERSHAVE-thumbnail-600x600-95.jpg" alt="Aftershave Cream"/></div>
+        <div class="product-info">
+          <div class="product-category">Men's Range</div>
+          <div class="product-name">Die Legende Aftershave Cream 100ml</div>
+          <div class="product-desc">Tea Tree Oil and essential oils — antibacterial aftershave that soothes and protects.</div>
+          <div class="product-footer"><span class="product-price">R185</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- ROOM & LINEN -->
+      <div class="product-card" data-category="Room & Linen" onclick="openModal('https://media.portmoni.com/resized/69614/LINEN_SPRAY_SET_h9fLYAA-thumbnail-600x600-95.jpg','Room &amp; Linen','Room &amp; Linen Spray','R110 – R249','Beautiful fragrance spray for your home and linen — available in 3 sizes and multiple scents. 200ml is R99 this week only!','100ml / 200ml / 500ml','Long-lasting fragrance · Safe on linen · Refreshes any space',['Rose','Lavender','Cinnamon Blossom','Lemongrass'],[['100ml','R110'],['200ml','R99 (normally R149)'],['500ml','R249']])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/LINEN_SPRAY_SET_h9fLYAA-thumbnail-600x600-95.jpg" alt="Room & Linen Spray"/></div>
+        <div class="product-info">
+          <div class="product-category">Room & Linen</div>
+          <span class="special-badge">✨ 200ml R99 This Week</span>
+          <div class="product-name">Room & Linen Spray</div>
+          <div class="product-desc">Beautiful fragrance spray for home and linen — 4 scents, 3 sizes.</div>
+          <div class="product-footer"><span class="product-price">R110 – R249</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Room & Linen" onclick="openModal('https://media.portmoni.com/resized/69614/Spa_essentials_with_colorful_sprays-thumbnail-600x600.png','Room &amp; Linen','Room &amp; Linen Minis — 5 Pack','R275','Five 30ml room and linen sprays in 5 different fragrances — a beautiful gift or home treat.','5 x 30ml','5 different fragrances · Perfect gift · Travel-friendly minis')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/Spa_essentials_with_colorful_sprays-thumbnail-600x600.png" alt="Linen Minis 5 Pack"/></div>
+        <div class="product-info">
+          <div class="product-category">Room & Linen</div>
+          <div class="product-name">Room & Linen Minis — 5 Pack</div>
+          <div class="product-desc">Five 30ml linen sprays in 5 different fragrances — beautiful as a gift.</div>
+          <div class="product-footer"><span class="product-price">R275</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- PERFUMES -->
+      <div class="product-card" data-category="Perfumes" onclick="openModal('https://media.portmoni.com/resized/69614/PERFUME_GROUP_GCLPjOV-thumbnail-600x600-95.jpg','Perfumes','Nature Inspired Perfume 15ml','R159','Naturally inspired fragrances in a beautiful 15ml bottle — 5 unique scents to choose from.','15ml bottle','Natural fragrance · 5 unique scents · Beautiful bottle',['Peony &amp; Blomme','Karamel &amp; Amber','Aloe &amp; Komkommer','Rooibos &amp; Vanilla','Vrugte'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/PERFUME_GROUP_GCLPjOV-thumbnail-600x600-95.jpg" alt="Nature Inspired Perfume"/></div>
+        <div class="product-info">
+          <div class="product-category">Perfumes</div>
+          <div class="product-name">Nature Inspired Perfume 15ml</div>
+          <div class="product-desc">Naturally inspired fragrances — 5 beautiful scents in a 15ml bottle.</div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Perfumes" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20260129-WA0012_edit_458235965741392-thumbnail-600x600-95.jpg','Perfumes','Liefling Women\'s Inspired Perfume 20ml','R179','French-inspired pocket spray for women — lasts 6–8 hours. 5 stunning scents to choose from.','20ml pocket spray','Long-lasting · French fragrances · 6–8 hour wear',['Lady Million','Be Delicious','Good Girl','Si Armani','Bombshell'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG-20260129-WA0012_edit_458235965741392-thumbnail-600x600-95.jpg" alt="Liefling Women's Perfume"/></div>
+        <div class="product-info">
+          <div class="product-category">Perfumes</div>
+          <div class="product-name">Liefling Women's Inspired Perfume 20ml</div>
+          <div class="product-desc">French-inspired pocket spray for women — lasts 6–8 hours. 5 stunning scents.</div>
+          <div class="product-footer"><span class="product-price">R179</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Perfumes" onclick="openModal('https://media.portmoni.com/resized/69614/IMG-20260129-WA0009_edit_458274751602887-thumbnail-600x600-95.jpg','Perfumes','Die Legende Men\'s Inspired Perfume 20ml','R179','French-inspired pocket spray for men — lasts 6–8 hours. 5 bold masculine scents.','20ml pocket spray','Long-lasting · French fragrances · 6–8 hour wear',['One Million','Dunhill Blue','Sauvage','Dunhill Desire','Diesel Only the Brave'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG-20260129-WA0009_edit_458274751602887-thumbnail-600x600-95.jpg" alt="Die Legende Men's Perfume"/></div>
+        <div class="product-info">
+          <div class="product-category">Perfumes</div>
+          <div class="product-name">Die Legende Men's Inspired Perfume 20ml</div>
+          <div class="product-desc">French-inspired pocket spray for men — lasts 6–8 hours. 5 bold masculine scents.</div>
+          <div class="product-footer"><span class="product-price">R179</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Perfumes" onclick="openModal('https://media.portmoni.com/resized/69614/Elegant_perfume_collection_with_peonies-thumbnail-600x600.png','Perfumes','Liefling Elegant — 15ml Gold &amp; Glass Spray','R159','A beautiful women\'s fragrance in an elegant gold and glass 15ml spray bottle — a sophisticated everyday scent.','15ml spray bottle','Women\'s fragrance · Elegant · Gold &amp; glass bottle · Sophisticated')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/Elegant_perfume_collection_with_peonies-thumbnail-600x600.png" alt="Liefling Elegant Perfume"/></div>
+        <div class="product-info">
+          <div class="product-category">Perfumes</div>
+          <div class="product-name">Liefling Elegant — 15ml Gold &amp; Glass Spray</div>
+          <div class="product-desc">Elegant women's fragrance in a beautiful gold and glass 15ml spray bottle.</div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <!-- COMBOS & GIFTS -->
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('https://media.portmoni.com/resized/69614/ROOIBOS_BATH_GROUP-thumbnail-600x600-95.jpg','Combos & Gifts','Trio Pack','R375','Hand Wash, Body Wash, and Body Lotion in one beautiful set — perfect gift or great value starter.','3 x 200ml','Hand Wash · Body Wash · Body Lotion · Great value',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk & Honey'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/ROOIBOS_BATH_GROUP-thumbnail-600x600-95.jpg" alt="Trio Pack"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos & Gifts</div>
+          <div class="product-name">Trio Pack</div>
+          <div class="product-desc">Hand Wash, Body Wash & Body Lotion — perfect gift or starter set.</div>
+          <div class="product-footer"><span class="product-price">R375</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('https://media.portmoni.com/resized/69614/COLLAGEN_FACE_GROUP-thumbnail-600x600-95.jpg','Combos & Gifts','Collagen Skincare Sample Pack','R395','Five-product Collagen starter set — try the full range or give as a beautiful gift.','5-piece set','Collagen range · 5 products · Trial sizes · Perfect gift')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/COLLAGEN_FACE_GROUP-thumbnail-600x600-95.jpg" alt="Collagen Sample Pack"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos & Gifts</div>
+          <div class="product-name">Collagen Skincare Sample Pack</div>
+          <div class="product-desc">Five-product Collagen starter set — try the full range or give as a gift.</div>
+          <div class="product-footer"><span class="product-price">R395</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('https://media.portmoni.com/resized/69614/SKINCARE_GROUP_AkIHWM7-thumbnail-600x600-95.jpg','Combos &amp; Gifts','Facial Skincare Sample','R280','Face Wash 30ml, Facial Toner with Witch Hazel 30ml, and Hydro Boosting Face Cream 30g — perfect starter set to try the facial skincare range.','3-piece facial set','Face Wash · Facial Toner · Hydro Face Cream · Trial sizes · Perfect gift')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/SKINCARE_GROUP_AkIHWM7-thumbnail-600x600-95.jpg" alt="Facial Skincare Sample"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos &amp; Gifts</div>
+          <div class="product-name">Facial Skincare Sample</div>
+          <div class="product-desc">Face Wash, Facial Toner &amp; Hydro Boosting Face Cream — try the facial range.</div>
+          <div class="product-footer"><span class="product-price">R280</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('https://media.portmoni.com/resized/69614/IMG_20250915_113254-thumbnail-600x600-95.jpg','Combos & Gifts','Guest Pack 1','R159','30ml Body Wash, Body Lotion & Shampoo — perfect for guest houses and lodges.','3 x 30ml','Body Wash · Body Lotion · Shampoo',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Cinnamon','Rooibos Extract','Milk & Honey'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG_20250915_113254-thumbnail-600x600-95.jpg" alt="Guest Pack 1"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos & Gifts</div>
+          <div class="product-name">Guest Pack 1</div>
+          <div class="product-desc">30ml Body Wash, Body Lotion & Shampoo — perfect for guest houses.</div>
+          <div class="product-footer"><span class="product-price">R159</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('https://media.portmoni.com/resized/69614/IMG_20250915_141945-thumbnail-600x600-95.jpg','Combos &amp; Gifts','Guest Pack 2','R179','30ml Body Wash, Body Lotion &amp; Shampoo plus a 30g Handmade Soap — perfect for guest houses.','4-piece set','Body Wash · Body Lotion · Shampoo · Handmade Soap',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk &amp; Honey'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG_20250915_141945-thumbnail-600x600-95.jpg" alt="Guest Pack 2"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos & Gifts</div>
+          <div class="product-name">Guest Pack 2</div>
+          <div class="product-desc">30ml Body Wash, Lotion, Shampoo & Handmade Soap — perfect for guest houses.</div>
+          <div class="product-footer"><span class="product-price">R179</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('https://media.portmoni.com/resized/69614/IMG_20250915_114118-thumbnail-600x600-95.jpg','Combos &amp; Gifts','Guest Pack 3','R165','30ml Body Wash, Body Lotion &amp; Shampoo plus 10g Bath Crystals — a lovely guest house gift set.','4-piece set','Body Wash · Body Lotion · Shampoo · Bath Crystals',['Rose','Lemongrass','Vanilla','Lavender','Aloe Cucumber','Cinnamon Blossom','Pink Peony','Elegant Grapefruit','Rose Vanilla','Rooibos Extract','Milk &amp; Honey'])">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/IMG_20250915_114118-thumbnail-600x600-95.jpg" alt="Guest Pack 3"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos & Gifts</div>
+          <div class="product-name">Guest Pack 3</div>
+          <div class="product-desc">30ml Body Wash, Lotion, Shampoo & Bath Crystals — a lovely guest house gift set.</div>
+          <div class="product-footer"><span class="product-price">R165</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('product-card-13.jpeg','Combos &amp; Gifts','Sleepy Pillow Mist 50ml','R99','Organic Lavender mist for peaceful sleep — suitable for children 1+ and safe during pregnancy.','50ml','Organic Lavender · Sleep support · Safe for children 1+ · Pregnancy safe')">
+        <div class="product-img"><img src="product-card-13.jpeg" alt="Sleepy Pillow Mist"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos & Gifts</div>
+          <div class="product-name">Sleepy Pillow Mist 50ml</div>
+          <div class="product-desc">Organic Lavender — promotes peaceful sleep. Safe for children 1+ and pregnancy.</div>
+          <div class="product-footer"><span class="product-price">R99</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+      <div class="product-card" data-category="Combos & Gifts" onclick="openModal('https://media.portmoni.com/resized/69614/GIFT_PACK_GROUP_PHOTO_cVXkRrN-thumbnail-600x600-95.jpg','Combos &amp; Gifts','Pamperlang Mini\'s','R70','7 travel-sized minis — Shampoo, Body Wash, Lotion, Bubble Bath, Hand Wash, Bath Crystals &amp; Muscle Rub.','7-piece mini set','7 mini products · Perfect for travel or gifting')">
+        <div class="product-img"><img src="https://media.portmoni.com/resized/69614/GIFT_PACK_GROUP_PHOTO_cVXkRrN-thumbnail-600x600-95.jpg" alt="Pamperlang Minis"/></div>
+        <div class="product-info">
+          <div class="product-category">Combos & Gifts</div>
+          <div class="product-name">Pamperlang Mini's</div>
+          <div class="product-desc">7 travel-sized minis — perfect for on-the-go or as a thoughtful gift.</div>
+          <div class="product-footer"><span class="product-price">R70</span><button class="product-btn">View</button></div>
+        </div>
+      </div>
+
+
+    </div>
+  </section>
+
+  <!-- How to Order -->
+  <!-- Pamperlang Hospitality Collection -->
+  <section class="promo-banner-section" id="hospitality" style="background: linear-gradient(135deg, #f2f5ef 0%, #fff 55%, #e6ecdd 100%);">
+    <div class="promo-banner-inner" style="max-width: 1050px;">
+      <img src="pamperlang-hospitality-banner.png" alt="Pamperlang Hospitality Collection — premium guest amenities for guest houses and lodges" class="promo-banner-img">
+      <div class="promo-banner-valid">Own a guest house, lodge or B&amp;B? WhatsApp <a href="https://wa.me/27834331977" target="_blank" style="color: inherit; font-weight: 700; text-decoration: underline;">Karin</a> about the Pamperlang Hospitality Collection.</div>
+    </div>
+  </section>
+
+  <section class="order-section" id="how-to-order">
+    <p class="section-tag">Simple & Easy</p>
+    <h2 class="section-title">How to Order</h2>
+    <p>Ordering through me is quick and easy. I handle everything from your order to your door — wherever you are in South Africa.</p>
+    <div class="order-steps">
+      <div class="order-step">
+        <div class="order-step-num">1</div>
+        <h4>Browse & Choose</h4>
+        <p>Pick your products and fragrances from the list above</p>
+      </div>
+      <div class="order-step">
+        <div class="order-step-num">2</div>
+        <h4>WhatsApp Me</h4>
+        <p>Send me your order on WhatsApp — I'll confirm availability and pricing</p>
+      </div>
+      <div class="order-step">
+        <div class="order-step-num">3</div>
+        <h4>Pay & Ship</h4>
+        <p>Make payment and I'll arrange delivery — courier nationwide or collect locally</p>
+      </div>
+    </div>
+    <a href="https://wa.me/27834331977" target="_blank" class="btn-whatsapp" style="font-size:0.9rem; padding: 1rem 2.5rem;">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Karin Now
+    </a>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="contact">
+    <div class="contact-inner">
+      <p class="section-tag">Get in Touch</p>
+      <h2 class="section-title">Contact Karin</h2>
+      <p style="color: var(--text-light); font-size:0.9rem; font-weight:300; margin-bottom:0;">I'm happy to help with product advice, orders, or any questions you have.</p>
+      <div class="contact-cards">
+        <div class="contact-card">
+          <div class="contact-card-icon">💬</div>
+          <div class="contact-card-label">WhatsApp</div>
+          <div class="contact-card-value"><a href="https://wa.me/27834331977">083 433 1977</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📧</div>
+          <div class="contact-card-label">Email</div>
+          <div class="contact-card-value" style="text-align:center; word-break:break-all;"><a href="mailto:karinpieters5@gmail.com">karinpieters5@gmail.com</a></div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📍</div>
+          <div class="contact-card-label">Based In</div>
+          <div class="contact-card-value">Meyerton, Gauteng</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🚚</div>
+          <div class="contact-card-label">Delivery</div>
+          <div class="contact-card-value">Nationwide Courier</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div style="text-align:center;padding:8px 0 0;"><button class="disclaimer-btn" onclick="openDisclaimer()">Disclaimer</button></div>
+    <p><strong>Pamper by Karin</strong> — Official Pamperlang Agent · Meyerton, Gauteng</p>
+    <p style="margin-top:0.5rem;">Questions? <a href="https://wa.me/27834331977">WhatsApp me</a> · <a href="mailto:karinpieters5@gmail.com">karinpieters5@gmail.com</a></p>
+    <p style="margin-top:0.5rem; opacity:0.5;">Products by <a href="https://www.pamperlangskoonheid.co.za" target="_blank">Pamperlang Skoonheid</a></p>
+  
+  </footer>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">↑</button>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/27834331977" target="_blank" class="whatsapp-btn" title="WhatsApp Karin">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Cart -->
+  <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <div>
+        <h3>My Order</h3>
+        <div class="cart-header-sub">Items you'd like to order from Karin</div>
+      </div>
+      <button class="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛍️</div>
+        <p>Your order list is empty.<br/>Browse the products and click<br/><strong>+ Add to Order</strong> on any item.</p>
+      </div>
+    </div>
+    <div class="cart-footer">
+
+      <!-- Mobile step 1: compact footer with total + Place Order button -->
+      <div class="cart-step-1" id="cartStep1">
+        <div class="cart-total-row" style="margin-bottom:0.8rem;">
+          <span class="cart-total-label">Estimated Total</span>
+          <span class="cart-total-amount" id="cartTotalStep1">R0</span>
+        </div>
+        <button class="cart-place-order-btn" onclick="showOrderForm()">Place my order →</button>
+        <a href="#products" onclick="closeCart()" class="btn-continue-shopping">← Add More Products</a>
+      </div>
+
+      <div class="cart-form" id="cartForm">
+        <a href="#" class="cart-back-link" onclick="hideOrderForm(event)">← Back to my products</a>
+        <span class="cart-form-label">Your Details</span>
+        <input type="text" id="custName" placeholder="Your name *" class="cart-input"/>
+        <input type="tel" id="custPhone" placeholder="Your WhatsApp / phone number *" class="cart-input"/>
+
+        <span class="cart-form-label">Delivery</span>
+        <div class="cart-radio-group">
+          <label class="cart-radio">
+            <input type="radio" name="delivery" value="collect" checked onchange="toggleDelivery()"/>
+            I'll collect from Karin
+          </label>
+          <label class="cart-radio">
+            <input type="radio" name="delivery" value="delivery" onchange="toggleDelivery()"/>
+            I need delivery
+          </label>
+        </div>
+        <div id="deliverySection" style="display:none;">
+          <input type="text" id="custAddress" placeholder="Your delivery address" class="cart-input"/>
+          <div class="cart-delivery-info">⚠️ Delivery is an extra cost. Karin will confirm the delivery fee with you directly.</div>
+        </div>
+      </div>
+
+      <div class="cart-total-row" id="cartTotalRow">
+        <span class="cart-total-label">Estimated Total</span>
+        <span class="cart-total-amount" id="cartTotal">R0</span>
+      </div>
+
+      <a id="cartSendBtn" href="#" onclick="sendViaWhatsApp(event)" class="btn-whatsapp cart-send-btn">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Send via WhatsApp
+      </a>
+
+      <a id="cartEmailBtn" href="#" onclick="sendViaEmail(event)" class="btn-email">
+        ✉️ Send via Email
+      </a>
+
+      <p class="cart-note">Choose how to send your order. Karin will confirm availability, final price & delivery.</p>
+    </div>
+  </div>
+
+  <!-- Added notification toast -->
+  <div class="added-notif" id="addedNotif"></div>
+
+  <!-- Modal -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModalOnOverlay(event)">
+    <div class="modal-wrap">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal">
+        <div id="modalImgWrap"></div>
+        <div class="modal-body">
+          <div class="modal-category" id="modalCategory"></div>
+          <div class="modal-title" id="modalTitle"></div>
+          <div class="modal-price" id="modalPrice"></div>
+          <div class="modal-desc" id="modalDesc"></div>
+          <div class="modal-details">
+            <div class="modal-detail"><span class="modal-detail-label">Size</span><span id="modalSize"></span></div>
+            <div class="modal-detail"><span class="modal-detail-label">Key Ingredients</span><span id="modalBenefits"></span></div>
+          </div>
+          <div class="fragrance-section" id="sizeSection">
+            <div class="fragrance-label">Choose Your Size</div>
+            <div class="fragrance-swatches" id="sizeSwatches"></div>
+            <div class="fragrance-error" id="sizeError">Please select a size first.</div>
+          </div>
+          <div class="fragrance-section" id="fragranceSection">
+            <div class="fragrance-label">Choose Your Fragrance</div>
+            <div class="fragrance-swatches" id="fragranceSwatches"></div>
+            <div class="fragrance-error" id="fragranceError">Please select a fragrance first.</div>
+          </div>
+          <div class="modal-actions">
+            <button class="btn-primary" onclick="addToCartFromModal()" style="font-size:0.82rem;">+ Add to Order</button>
+            <a id="modalWhatsapp" href="#" target="_blank" class="btn-whatsapp" style="font-size:0.78rem; padding:0.7rem 1.2rem;">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Order Now
+            </a>
+            <button class="btn-outline" onclick="closeModal()" style="border-color: var(--sand); color: var(--text-light); font-size:0.8rem;">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── FILTER ──
+    function filterProducts(category, btn) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+      });
+    }
+
+    // ── MODAL ──
+    let currentItem = { img: '', name: '', price: '', fragrances: [], sizeOptions: [] };
+
+    function openModal(img, category, name, price, desc, size, benefits, fragrances, sizeOptions, rotation) {
+      currentItem = { img, name, price, fragrances: fragrances || [], sizeOptions: sizeOptions || [] };
+
+      document.getElementById('modalCategory').textContent = category;
+      document.getElementById('modalTitle').textContent = name;
+      document.getElementById('modalPrice').textContent = price;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalSize').textContent = size;
+      document.getElementById('modalBenefits').textContent = benefits;
+      document.getElementById('fragranceError').style.display = 'none';
+      document.getElementById('sizeError').style.display = 'none';
+
+      const productCardImages = {
+        'Hair Growth Oil 50ml': 'product-card-01.jpeg',
+        '2-in-1 Conditioning Shampoo': 'product-card-08.jpeg',
+        'Turmeric Soap': 'product-card-03.jpeg',
+        'Activated Charcoal Soap': 'product-card-04.jpeg',
+        'Bath Crystals': 'product-card-05.jpeg',
+        'Activated Charcoal Shampoo': 'product-card-07.jpeg',
+        'Activated Charcoal Conditioner': 'product-card-07.jpeg',
+        'Collagen & Keratin Shampoo': 'product-card-09.jpeg',
+        'Collagen & Keratin Conditioner': 'product-card-09.jpeg',
+        'Face Wash Gel 100ml': 'face-wash-gel-card.jpeg',
+        'Chest Vapor Rub 50g': 'product-card-11.jpeg',
+        'Chest Vapor Rub 15g': 'product-card-11.jpeg',
+        'Sinus & Congestion Roller 10ml': 'product-card-12.jpeg',
+        'Sleepy Pillow Mist 50ml': 'product-card-13.jpeg',
+        '2-in-1 Micellar Water & Toner 50ml': 'micellar-toner-card.jpeg',
+        'Acne Cream with Tea Tree Oil 50g': 'product-card-15.jpeg',
+        'Hydro Boosting & Anti Aging Face Cream 50g': 'hydro-face-cream-card.jpeg',
+        'Natural Botox Roller 10ml': 'natural-botox-card.jpeg',
+        'Castor Oil': 'product-card-18.jpeg',
+        'Collagen Day / Night Cream': 'collagen-day-night-cream-card.jpeg',
+        'Collagen Eye Cream': 'collagen-eye-cream-card.jpeg',
+        'Collagen Skincare Sample Pack': 'product-card-19.jpeg',
+        'Natural Retinol 30ml': 'product-card-21.jpeg',
+        'Tissue Oil for Face & Body 50ml': 'product-card-22.jpeg',
+        'Facial Toner with Witch Hazel 100ml': 'product-card-23.jpeg',
+        'Wrinkle Filler Serum 30ml': 'product-card-24.jpeg',
+        'Acne Roller 10ml': 'product-card-25.jpeg',
+        'Rose Water 50ml': 'product-card-26.jpeg',
+        'Natural Vit C Glow Serum 30ml': 'product-card-27.jpeg',
+        'Facial Scrub 50g': 'product-card-28.jpeg',
+        'Lip Balm 15g': 'product-card-29.jpeg',
+        'Hunger Stop 60 Capsules': 'product-card-30.jpeg',
+        'Collagen Powder 150g': 'collagen-powder-capsules-photo.jpeg',
+        'Anxiety & Headache Buster Roller 10ml': 'product-card-45.jpeg',
+        'Cortisol Herbal Support Drops': 'product-card-33.jpeg',
+        'Monalisa — Female Hormone Support': 'product-card-34.jpeg',
+        'Cuticle & Nail Growth Roller 10ml': 'product-card-35.jpeg',
+        'Stress Drops': 'product-card-36.jpeg',
+        'Rooibos Revive Butter 200g': 'product-card-37.jpeg',
+        'Muscle Rub': 'product-card-38.jpeg',
+        'Pain & Inflammation Oil 50ml': 'product-card-38.jpeg',
+        'Kiddies Calm & Sleep Roller': 'product-card-39.jpeg',
+        'Heel & Elbow Balm 50gr': 'product-card-40.jpeg',
+        'Fragrance Free Coffee & Salt Scrub with Rosemary 50gr': 'product-card-41.jpeg',
+        'Herbal Immune Care Drops': 'product-card-42.jpeg',
+        'Fat Burn': 'product-card-43.jpeg'
+      };
+      const cardImage = productCardImages[name];
+
+      const imgWrap = document.getElementById('modalImgWrap');
+      const rotationStyle = rotation ? `transform:${rotation};` : '';
+      if (cardImage) {
+        imgWrap.innerHTML = `<img src="${cardImage}" class="modal-img-card" alt="${name}"/>`;
+      } else {
+        imgWrap.innerHTML = img
+          ? `<img src="${img}" class="modal-img" alt="${name}" style="image-orientation:from-image;${rotationStyle}"/>`
+          : `<div class="modal-img-placeholder">🌸</div>`;
+      }
+
+      // Size selector
+      const sizeSection = document.getElementById('sizeSection');
+      const sizeContainer = document.getElementById('sizeSwatches');
+      sizeContainer.innerHTML = '';
+      if (sizeOptions && sizeOptions.length > 0) {
+        sizeSection.style.display = 'block';
+        sizeOptions.forEach(([sz, pr]) => {
+          const swatch = document.createElement('button');
+          swatch.className = 'fragrance-swatch';
+          swatch.textContent = `${sz} — ${pr}`;
+          swatch.onclick = function() {
+            document.querySelectorAll('#sizeSwatches .fragrance-swatch').forEach(s => s.classList.remove('selected'));
+            this.classList.add('selected');
+            document.getElementById('sizeError').style.display = 'none';
+            currentItem.price = pr;
+            document.getElementById('modalPrice').textContent = pr;
+            updateWhatsAppLink(name, pr, document.querySelector('#fragranceSwatches .fragrance-swatch.selected')?.textContent || null);
+          };
+          sizeContainer.appendChild(swatch);
+        });
+      } else {
+        sizeSection.style.display = 'none';
+      }
+
+      // Fragrance selector
+      const fragranceSection = document.getElementById('fragranceSection');
+      const swatchContainer = document.getElementById('fragranceSwatches');
+      swatchContainer.innerHTML = '';
+      if (fragrances && fragrances.length > 0) {
+        fragranceSection.style.display = 'block';
+        fragrances.forEach(f => {
+          const swatch = document.createElement('button');
+          swatch.className = 'fragrance-swatch';
+          swatch.textContent = f;
+          swatch.onclick = function() {
+            document.querySelectorAll('#fragranceSwatches .fragrance-swatch').forEach(s => s.classList.remove('selected'));
+            this.classList.add('selected');
+            document.getElementById('fragranceError').style.display = 'none';
+            updateWhatsAppLink(name, currentItem.price, f);
+          };
+          swatchContainer.appendChild(swatch);
+        });
+      } else {
+        fragranceSection.style.display = 'none';
+      }
+
+      updateWhatsAppLink(name, price, null);
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function updateWhatsAppLink(name, price, fragrance) {
+      const msg = fragrance
+        ? `Hi Karin! I'd like to order the *${name}* (${fragrance}) at ${price}. Please let me know how to proceed.`
+        : `Hi Karin! I'd like to order the *${name}* at ${price}. Please let me know how to proceed.`;
+      document.getElementById('modalWhatsapp').href = `https://wa.me/27834331977?text=${encodeURIComponent(msg)}`;
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeModalOnOverlay(e) {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+
+    // ── CART ──
+    let cart = [];
+
+    function addToCartFromModal() {
+      const selectedSize = document.querySelector('#sizeSwatches .fragrance-swatch.selected');
+      const selectedFrag = document.querySelector('#fragranceSwatches .fragrance-swatch.selected');
+      const fragrance = selectedFrag ? selectedFrag.textContent : null;
+      const sizeLabel = selectedSize ? selectedSize.textContent.split(' — ')[0] : null;
+
+      if (currentItem.sizeOptions.length > 0 && !selectedSize) {
+        document.getElementById('sizeError').style.display = 'block';
+        return;
+      }
+      if (currentItem.fragrances.length > 0 && !fragrance) {
+        document.getElementById('fragranceError').style.display = 'block';
+        return;
+      }
+
+      addToCart(currentItem.name, currentItem.price, fragrance, currentItem.img, sizeLabel);
+      closeModal();
+      setTimeout(() => openCart(), 200);
+    }
+
+    function addToCart(name, price, fragrance, img, size) {
+      const existing = cart.find(i => i.name === name && i.fragrance === fragrance && i.size === (size || null));
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({ name, price, fragrance: fragrance || null, size: size || null, img: img || '', qty: 1 });
+      }
+      renderCart();
+      updateCartBadge();
+      showAddedNotif(name);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      renderCart();
+      updateCartBadge();
+    }
+
+    function changeQty(index, delta) {
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) cart.splice(index, 1);
+      renderCart();
+      updateCartBadge();
+    }
+
+    function parsePrice(str) {
+      const m = str.match(/R(\d+)/);
+      return m ? parseInt(m[1]) : 0;
+    }
+
+    function renderCart() {
+      const container = document.getElementById('cartItems');
+      const sendBtn = document.getElementById('cartSendBtn');
+      const totalEl = document.getElementById('cartTotal');
+
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="cart-empty"><div class="cart-empty-icon">🛍️</div><p>Your order list is empty.<br/>Browse the products and click<br/><strong>+ Add to Order</strong> on any item.</p></div>`;
+        totalEl.textContent = 'R0';
+        document.getElementById('cartDrawer').classList.remove('order-step');
+        return;
+      }
+
+      // Display controlled by CSS via .order-step class — don't override here
+      let total = 0;
+      let html = '';
+
+      cart.forEach((item, i) => {
+        total += parsePrice(item.price) * item.qty;
+        html += `
+          <div class="cart-item">
+            <div class="cart-item-img">
+              ${item.img ? `<img src="${item.img}" alt="${item.name}"/>` : '<div style="display:flex;align-items:center;justify-content:center;height:100%;font-size:1.4rem;">🌸</div>'}
+            </div>
+            <div class="cart-item-info">
+              <div class="cart-item-name">${item.name}</div>
+              ${item.size ? `<div class="cart-item-fragrance">${item.size}</div>` : ''}
+              ${item.fragrance ? `<div class="cart-item-fragrance">${item.fragrance}</div>` : ''}
+              <div class="cart-item-price">${item.price}</div>
+              <div class="cart-item-row">
+                <button class="qty-btn" onclick="changeQty(${i},-1)">−</button>
+                <span class="qty-num">${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty(${i},1)">+</button>
+                <button class="cart-item-remove" onclick="removeFromCart(${i})">Remove</button>
+              </div>
+            </div>
+          </div>`;
+      });
+
+      container.innerHTML = html;
+      totalEl.textContent = `R${total}`;
+      const step1Total = document.getElementById('cartTotalStep1');
+      if (step1Total) step1Total.textContent = `R${total}`;
+    }
+
+    function showOrderForm() {
+      document.getElementById('cartDrawer').classList.add('order-step');
+    }
+
+    function hideOrderForm(e) {
+      e.preventDefault();
+      document.getElementById('cartDrawer').classList.remove('order-step');
+    }
+
+    function buildOrderMessage() {
+      const name = document.getElementById('custName').value.trim();
+      const phone = document.getElementById('custPhone').value.trim();
+      const deliveryType = document.querySelector('input[name="delivery"]:checked').value;
+      const address = document.getElementById('custAddress').value.trim();
+
+      if (!name || !phone) {
+        alert('Please fill in your name and phone number before sending your order.');
+        return null;
+      }
+      if (deliveryType === 'delivery' && !address) {
+        alert('Please fill in your delivery address.');
+        return null;
+      }
+
+      let total = 0;
+      cart.forEach(item => { total += parsePrice(item.price) * item.qty; });
+
+      let msg = `Hi Karin!\n\nI would like to place the following order:\n\n`;
+      msg += `MY DETAILS\n`;
+      msg += `Name: ${name}\n`;
+      msg += `Phone: ${phone}\n`;
+      if (deliveryType === 'delivery') {
+        msg += `Delivery address: ${address}\n`;
+        msg += `Delivery: Yes please — please confirm the delivery fee\n`;
+      } else {
+        msg += `Delivery: I will collect from you\n`;
+      }
+      msg += `\nMY ORDER\n`;
+      cart.forEach(item => {
+        msg += `• ${item.qty}x ${item.name}`;
+        if (item.size) msg += ` (${item.size})`;
+        if (item.fragrance) msg += ` — ${item.fragrance}`;
+        msg += ` — ${item.price}\n`;
+      });
+      msg += `\nEstimated Total: R${total}`;
+      if (deliveryType === 'delivery') msg += ` (+ delivery fee to be confirmed)`;
+      msg += `\n\nThank you!`;
+      return msg;
+    }
+
+    function sendViaWhatsApp(e) {
+      e.preventDefault();
+      const msg = buildOrderMessage();
+      if (!msg) return;
+      window.open(`https://wa.me/27834331977?text=${encodeURIComponent(msg)}`, '_blank');
+    }
+
+    function sendViaEmail(e) {
+      e.preventDefault();
+      const msg = buildOrderMessage();
+      if (!msg) return;
+      const subject = encodeURIComponent('New Order — Pamper by Karin');
+      window.location.href = `mailto:karinpieters5@gmail.com?subject=${subject}&body=${encodeURIComponent(msg)}`;
+    }
+
+    const backToTopBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+    });
+
+    function toggleDelivery() {
+      const deliveryType = document.querySelector('input[name="delivery"]:checked').value;
+      document.getElementById('deliverySection').style.display = deliveryType === 'delivery' ? 'block' : 'none';
+    }
+
+    function updateCartBadge() {
+      const count = cart.reduce((sum, i) => sum + i.qty, 0);
+      ['cartBadge', 'cartBadgeMobile'].forEach(id => {
+        const badge = document.getElementById(id);
+        if (badge) { badge.textContent = count; badge.style.display = count > 0 ? 'flex' : 'none'; }
+      });
+    }
+
+    function openCart() {
+      document.getElementById('cartOverlay').classList.add('open');
+      document.getElementById('cartDrawer').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cartOverlay').classList.remove('open');
+      const drawer = document.getElementById('cartDrawer');
+      drawer.classList.remove('open');
+      drawer.classList.remove('order-step');
+      document.body.style.overflow = '';
+    }
+
+    function showAddedNotif(name) {
+      const notif = document.getElementById('addedNotif');
+      notif.textContent = `✓  ${name} added to order`;
+      notif.classList.add('show');
+      setTimeout(() => notif.classList.remove('show'), 2500);
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeModal(); closeCart(); closeLightbox(); }
+    });
+
+    // Product Showcase Slider
+    (function() {
+      const track = document.getElementById('showcaseTrack');
+      const progress = document.getElementById('showcaseProgress');
+      const lb = document.getElementById('showcaseLightbox');
+      const lbImg = document.getElementById('showcaseLbImg');
+      if (!track) return;
+
+      const slides = Array.from(track.querySelectorAll('.showcase-slide'));
+      const total = slides.length;
+      let current = 0;
+      let autoTimer;
+      let looping = false;
+
+      // Clone all slides and append so the loop is seamless
+      slides.forEach(s => track.appendChild(s.cloneNode(true)));
+
+      function spv() {
+        if (window.innerWidth <= 580) return 1;
+        if (window.innerWidth <= 900) return 2;
+        return 3;
+      }
+
+      function goTo(n) {
+        current = n;
+        const sw = track.querySelectorAll('.showcase-slide')[0].offsetWidth;
+        track.style.transform = 'translateX(-' + (current * sw) + 'px)';
+        const pos = current % total;
+        progress.style.width = total > 1 ? ((pos / (total - 1)) * 100) + '%' : '0%';
+
+        // When we reach the cloned section, silently snap back to the originals
+        if (current >= total && !looping) {
+          looping = true;
+          setTimeout(function() {
+            track.style.transition = 'none';
+            current = current - total;
+            const sw2 = track.querySelectorAll('.showcase-slide')[0].offsetWidth;
+            track.style.transform = 'translateX(-' + (current * sw2) + 'px)';
+            requestAnimationFrame(function() {
+              requestAnimationFrame(function() {
+                track.style.transition = '';
+                looping = false;
+              });
+            });
+          }, 560);
+        }
+      }
+
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(function() {
+          goTo(current + 1);
+        }, 4000);
+      }
+
+      document.getElementById('showcasePrev').addEventListener('click', function() {
+        if (current <= 0) { current = total; }
+        goTo(current - 1);
+        resetAuto();
+      });
+      document.getElementById('showcaseNext').addEventListener('click', function() { goTo(current + 1); resetAuto(); });
+      window.addEventListener('resize', function() { track.style.transition = 'none'; goTo(0); setTimeout(function(){ track.style.transition=''; }, 50); });
+      resetAuto();
+
+      // Lightbox
+      const lbOrderBtn = document.getElementById('showcaseLbOrderBtn');
+      const lbShopBtn = document.getElementById('showcaseLbShop');
+      let currentProduct = '';
+
+
+      slides.forEach(function(slide) {
+        slide.querySelector('img').addEventListener('click', function() {
+          lbImg.src = this.src;
+          currentProduct = slide.getAttribute('data-product') || 'a Pamperlang product';
+          const msg = encodeURIComponent('Hi Karin! I would like to order the ' + currentProduct + ' 🌸 Please let me know the price and how to pay. Thank you!');
+          lbOrderBtn.href = 'https://wa.me/27834331977?text=' + msg;
+          lb.classList.add('open');
+        });
+      });
+
+      lbShopBtn.addEventListener('click', function() {
+        closeLightbox();
+        // Strip price info (everything after " — ") to get the clean product name
+        const cleanName = currentProduct.split(' — ')[0].trim();
+        const words = cleanName.split(' ');
+        filterProducts('all', null);
+        setTimeout(function() {
+          const cards = document.querySelectorAll('.product-card');
+          let found = null;
+          // Try matching from longest to shortest word sequence until found
+          for (let len = words.length; len >= 2 && !found; len--) {
+            const term = words.slice(0, len).join(' ').toLowerCase();
+            cards.forEach(function(card) {
+              if (found) return;
+              const nameEl = card.querySelector('.product-name');
+              if (nameEl && nameEl.textContent.toLowerCase().includes(term)) found = card;
+            });
+          }
+          if (found) {
+            found.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(function() { found.click(); }, 600);
+          } else {
+            document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 300);
+      });
+
+      function closeLightbox() { lb.classList.remove('open'); lbImg.src = ''; }
+      document.getElementById('showcaseLbClose').addEventListener('click', closeLightbox);
+      lb.addEventListener('click', function(e) { if (e.target === lb) closeLightbox(); });
+      window.closeLightbox = closeLightbox;
+
+      goTo(0);
+      resetAuto();
+    })();
+
+  </script>
+  <!-- Skincare Info Modal -->
+  <div class="skin-overlay" id="skinOverlay" onclick="if(event.target===this)closeSkinModal()">
+    <div class="skin-modal">
+      <button class="skin-modal-close" onclick="closeSkinModal()">×</button>
+      <div class="skin-modal-hdr">
+        <div class="skin-modal-tagline" id="skinTagline"></div>
+        <h3 id="skinName"></h3>
+        <div class="skin-modal-desc" id="skinDesc"></div>
+      </div>
+      <div class="skin-modal-body" id="skinBody"></div>
+    </div>
+  </div>
+  <!-- Disclaimer Modal -->
+  <div class="skin-overlay" id="disclaimerOverlay" onclick="if(event.target===this)closeDisclaimer()">
+    <div class="skin-modal">
+      <button class="skin-modal-close" onclick="closeDisclaimer()">×</button>
+      <div class="skin-modal-hdr"><h3 style="margin:0;">Disclaimer</h3><div class="skin-modal-tagline">Pamperlang Skoonheid — Please read before using our products</div></div>
+      <div class="skin-modal-body"><p style="margin-bottom:16px;">Please read the following information carefully before using our products.</p>
+<h4 style="color:#8B3A52;margin:0 0 8px;">🌿 Natural Skincare Products</h4>
+<ul style="margin:0 0 16px;padding-left:18px;font-size:13px;color:#444;line-height:1.8;">
+<li>Our skincare products are made with natural ingredients and botanical extracts.</li>
+<li>Results may vary from person to person.</li>
+<li>For external use only.</li>
+<li>Avoid contact with eyes. If contact occurs, rinse thoroughly with water.</li>
+<li>If irritation or redness occurs, discontinue use and consult a dermatologist.</li>
+<li>Perform a patch test before first use, especially if you have sensitive skin.</li>
+<li>Not intended to diagnose, treat, cure or prevent any disease.</li>
+</ul>
+<h4 style="color:#8B3A52;margin:0 0 8px;">🛁 Bath & Body Care Products</h4>
+<ul style="margin:0 0 16px;padding-left:18px;font-size:13px;color:#444;line-height:1.8;">
+<li>Our bath and body products are for external use only.</li>
+<li>Keep out of reach of children.</li>
+<li>Avoid contact with eyes and mucous membranes.</li>
+<li>If irritation occurs, discontinue use.</li>
+<li>Store in a cool, dry place away from direct sunlight.</li>
+<li>Natural ingredients may cause variations in colour, texture or fragrance. This does not affect product quality.</li>
+</ul>
+<h4 style="color:#8B3A52;margin:0 0 8px;">🌸 Essential Oils</h4>
+<ul style="margin:0 0 16px;padding-left:18px;font-size:13px;color:#444;line-height:1.8;">
+<li>Essential oils are highly concentrated and intended for external use only.</li>
+<li>Do not ingest.</li>
+<li>Dilute properly before use on skin.</li>
+<li>Not recommended for use during pregnancy, breastfeeding or on children without professional advice.</li>
+<li>Keep out of reach of children.</li>
+<li>Store in a cool, dark place.</li>
+<li>Consult a healthcare professional if you have a medical condition.</li>
+</ul>
+<p style="font-size:12px;color:#999;text-align:center;margin:0;">Your safety is important to us. Thank you for choosing Pamperlang Skoonheid. 💗</p></div>
+    </div>
+  </div>
+  <script>
+  const SKIN_INFO = {
+    'face-wash-gel': {
+      name:'Face Wash Gel', tagline:'Cleanse. Refresh. Glow.',
+      desc:'A gentle yet effective cleanser that purifies the skin without stripping its natural moisture.',
+      ingredients:['Vitamin B3 (Niacinamide)','Liquorice Extract'],
+      benefits:['Gently removes dirt, oil and impurities without drying or irritating','Leaves skin feeling clean, refreshed and perfectly balanced','Brightens skin tone and soothes irritation','Supports the skin barrier for a healthier complexion'],
+      howto:['Wet your face with lukewarm water.','Apply a small amount to your palms.','Gently massage onto your face in circular motions.','Rinse thoroughly and pat dry.','Use morning and evening for best results.'],
+      bestfor:['All skin types','Daily use','Oily, combination and blemish-prone skin','Dull, uneven skin tone'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'micellar-toner': {
+      name:'2 in 1 Micellar Water & Toner', tagline:'Cleanse. Tone. Refresh. One step. Complete care.',
+      desc:'Gently cleanses and removes makeup, dirt and impurities while toning and refreshing your skin in one effortless step. Infused with Frankincense Extract.',
+      ingredients:['Frankincense Extract'],
+      benefits:['Removes makeup, dirt and impurities effectively','Rebalances and revitalises the skin','Soothes and comforts sensitive skin','Promotes a smooth, healthy and glowing appearance'],
+      howto:['Pour a small amount onto a cotton pad.','Gently swipe over face, eyes and neck to remove makeup and impurities.','No need to rinse — follow with your serum and moisturiser.'],
+      bestfor:['All skin types','Daily use','Sensitive and stressed skin','Busy lifestyles'],
+      risks:['Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Keep out of reach of children.']
+    },
+    'toner': {
+      name:'Witch Hazel Facial Toner', tagline:'Hydrate. Balance. Glow.',
+      desc:'A refreshing and nourishing formula designed to rebalance your skin, remove impurities and prep it for the next steps in your skincare routine.',
+      ingredients:['Vitamin B3 (Niacinamide)','Witch Hazel'],
+      benefits:['Instantly refreshes and hydrates for soft, supple skin','Helps tighten pores and remove residue for a smoother look','Regulates oil production without stripping the skin','Improves skin texture and promotes a more radiant complexion'],
+      howto:['After cleansing, pour a small amount onto a cotton pad.','Gently sweep over your face and neck, avoiding the eye area.','Allow to absorb.','Follow with your serum and moisturiser.'],
+      bestfor:['All skin types','Daily use','Dull and tired-looking skin','Oily, combination and blemish-prone skin','Uneven skin tone'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'tissue-oil': {
+      name:'Jojoba Tissue Oil', tagline:"Nature's Liquid Gold for Healthy, Radiant Skin",
+      desc:"A lightweight, nutrient-rich oil that nourishes, protects and restores balance — for beautifully healthy skin and hair. Cold pressed, pure and natural.",
+      ingredients:['100% Pure Jojoba Oil (cold pressed & unrefined)'],
+      benefits:['Moisturises and nourishes without clogging pores','Helps regulate sebum levels — ideal for both oily and dry skin','Rich in antioxidants and Vitamin E to protect the skin barrier','Soothes irritation, redness and sensitivity','Supports healthy cell function and leaves skin looking radiant'],
+      howto:['Apply a few drops to clean, damp skin.','Massage gently into face, neck or body.','Use morning and evening for best results.','Can be used on its own or blended with moisturiser.'],
+      bestfor:['All skin types','Sensitive skin','Dry & dehydrated skin','Oily & combination skin','Mature skin','Hair & scalp care'],
+      risks:['For external use only.','Do a patch test before first use if you have sensitive skin.','Discontinue use if irritation occurs and consult a dermatologist.','Avoid contact with eyes — rinse thoroughly if contact occurs.']
+    },
+    'rose-water': {
+      name:'Pure Rose Water', tagline:"Nature's Gentle Touch for Fresh, Balanced, Radiant Skin",
+      desc:'Steam distilled from fresh rose petals to capture the natural goodness and delicate aroma of roses. 100% pure — no additives, no alcohol.',
+      ingredients:['Pure Rose Hydrosol (steam distilled)','Distilled Water'],
+      benefits:['Instantly refreshes and hydrates tired, dull or dehydrated skin','Helps tighten pores and balance the skin\'s natural pH','Calms irritation, redness and sensitivity','Revitalises skin and leaves it looking fresh, soft and radiantly healthy','Provides a gentle, uplifting floral scent'],
+      howto:['Spray directly onto face or neck.','Or apply with a cotton pad after cleansing.','Use any time of the day to refresh and hydrate.','Can be used before serums, moisturisers or makeup.'],
+      bestfor:['All skin types','Sensitive & irritated skin','Dry & dehydrated skin','Tired, dull skin','Hot weather & after sun','Makeup setting & refreshing'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'vit-c-serum': {
+      name:'Vit C Glow Serum', tagline:'Brighten. Hydrate. Glow. Your daily dose of radiance.',
+      desc:'A lightweight, fast-absorbing formula designed to brighten, even skin tone and boost hydration. Enriched with Vitamin C and Hyaluronic Acid.',
+      ingredients:['Vitamin C (antioxidant, brightening)','Hyaluronic Acid (moisture magnet)'],
+      benefits:['Brightens skin and reduces the look of dark spots','Deeply hydrates, plumps the skin and improves elasticity','Protects the skin from free radical damage and environmental stressors','Smoothes and plumps for a more youthful appearance','Revives tired, dull skin and enhances natural radiance'],
+      howto:['Cleanse your face thoroughly.','Apply 2–3 drops of serum to your face and neck.','Gently pat and press into the skin until fully absorbed.','Follow with moisturiser.','Use every morning for best results.'],
+      bestfor:['All skin types','Dull and tired-looking skin','Uneven skin tone','Early signs of ageing','Dehydrated skin','Daily glow and radiance'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'hyaluronic-serum': {
+      name:'Pure Hyaluronic Acid Serum', tagline:'Hydrate. Plump. Smooth. Renew.',
+      desc:'A Wrinkle Filler Serum that delivers intense hydration deep into the skin to visibly plump fine lines and wrinkles, improve elasticity and restore a smooth, youthful complexion.',
+      ingredients:['100% Pure Hyaluronic Acid (holds up to 1000x its weight in water)'],
+      benefits:['Deeply hydrates and locks in moisture for soft, supple skin','Visibly reduces the appearance of fine lines and wrinkles','Enhances skin firmness and resilience','Supports a healthy barrier for smoother, healthier skin','Leaves skin looking fresh, plump and youthfully glowing'],
+      howto:['Cleanse your face.','Apply 2–3 drops to your face and neck.','Gently pat and press into the skin until fully absorbed.','Follow with your moisturiser.','Use morning and evening for best results.'],
+      bestfor:['All skin types','Dry & dehydrated skin','Fine lines & wrinkles','Dull & tired-looking skin','Mature skin','Loss of firmness'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'retinol': {
+      name:'Natural Retinol Serum', tagline:'Plant-Powered Renewal. Gentle. Effective. Timeless.',
+      desc:'Harnesses the power of Bakuchiol — a plant-based retinol alternative — and Jojoba Oil to visibly improve skin texture and reduce the appearance of fine lines, without irritation.',
+      ingredients:['Bakuchiol (plant-based retinol alternative)','Jojoba Oil'],
+      benefits:['Visibly reduces fine lines and signs of ageing','Supports skin cell renewal for a fresher, more even complexion','Nourishes and maintains the skin\'s natural moisture balance','Gentle and non-irritating — no peeling or sensitivity','Enhances skin clarity, radiance and overall skin health'],
+      howto:['Cleanse your face thoroughly.','Apply 2–3 drops to face and neck in the evening.','Gently massage until fully absorbed.','Follow with a moisturiser.','Use sunscreen during the day.'],
+      bestfor:['All skin types','Fine lines & wrinkles','Uneven skin tone','Dull & tired-looking skin','Sensitive & reactive skin','Skin in need of renewal'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'natural-botox': {
+      name:'Natural Botox Roller 10ml', tagline:'For Younger-Looking Skin. Powered by Nature.',
+      desc:'A luxurious blend of plant-powered ingredients that helps visibly reduce the appearance of fine lines and wrinkles, firm and smooth the skin, and restore a youthful glow — naturally and effectively.',
+      ingredients:['Castor Oil','Jojoba Oil','Rosehip Oil','Frankincense'],
+      benefits:['Reduces the look of fine lines and wrinkles','Improves skin elasticity and firmness','Deeply hydrates and nourishes the skin','Boosts radiance and natural glow','Natural lifting and smoothing effect'],
+      howto:['Cleanse your face thoroughly.','Apply 2–3 drops to face and neck.','Gently massage using upward motions.','Use morning and night for best results.','Follow with moisturiser and sunscreen during the day.'],
+      bestfor:['Fine lines & wrinkles','Loss of firmness','Tired, dull-looking skin','Mature skin','All skin types (patch test for sensitive skin)'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'acne-roller': {
+      name:'Acne Roller', tagline:'Clearer Skin. Naturally.',
+      desc:'A powerful, all-natural blend of pure essential oils and botanical oils that targets breakouts, calms inflammation and promotes clear, healthy-looking skin.',
+      ingredients:['Lavender Oil','Frankincense Oil','Tea Tree Oil','Jojoba Oil'],
+      benefits:['Helps reduce acne and blemishes','Calms redness and irritation','Balances oil production','Clears pores and prevents breakouts','Promotes smoother, healthier skin'],
+      howto:['Cleanse your face and pat skin dry.','Roll the Acne Roller directly on problem areas.','Gently roll over skin using upward or circular motions.','Let the oil absorb — no rinsing needed.','Use morning and night for best results.'],
+      bestfor:['Acne-prone skin','Oily & combination skin','Active breakouts','Redness & inflammation','Uneven skin texture','Teens & adults'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'collagen-day-night': {
+      name:'Collagen Day & Night Cream', tagline:'Firm. Hydrate. Renew.',
+      desc:'A rich yet lightweight moisturiser that works day and night to support collagen production, improve elasticity and reveal a smoother, more youthful-looking skin.',
+      ingredients:['1.5% Hyaluronic Acid','3% Vitamin B3 (Niacinamide)','Liquorice Extract','Collagen Peptides','Nourishing Oils'],
+      benefits:['Boosts skin firmness and elasticity','Deep hydration that lasts all day','Reduces the appearance of fine lines and wrinkles','Improves skin texture','Supports the skin barrier and resilience'],
+      howto:['Cleanse and tone your face.','Apply a pea-sized amount to face and neck.','Gently massage in upward motions until fully absorbed.','Use morning and night for best results.'],
+      bestfor:['All skin types','Fine lines & wrinkles','Loss of firmness','Dull, tired skin','Skin needing deep hydration'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'collagen-eye': {
+      name:'Collagen Eye Cream', tagline:'Brighten. Smooth. Revive.',
+      desc:'A delicate, fast-absorbing eye cream that targets puffiness, dark circles and fine lines for a brighter, more refreshed and youthful eye area.',
+      ingredients:['Hyaluronic Acid','Collagen Peptides'],
+      benefits:['Reduces the look of dark circles and crow\'s feet','Deeply hydrates and smooths the eye area','Brightens and revives tired eyes','Lightweight and gentle for daily use'],
+      howto:['Gently cleanse the area.','Apply a small amount (coin-sized) to ring finger.','Tap lightly around the eye contour — avoid direct contact with eyes.','Use morning and night.'],
+      bestfor:['Dark circles & puffiness','Fine lines around the eyes','Tired, dull eyes','Daily use'],
+      risks:['For external use only.','Avoid direct contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Do a patch test before first use if you have sensitive skin.']
+    },
+    'hydro-face-cream': {
+      name:'Hydro Boosting & Anti-Aging Face Cream', tagline:'Deep Hydration. Skin Renewal. Youthful Glow.',
+      desc:'A powerhouse blend of science and nature to deeply hydrate, nourish and visibly reduce signs of ageing. For smoother, firmer, brighter and more radiant skin.',
+      ingredients:['1.5% Hyaluronic Acid','3% Vitamin B3 (Niacinamide)','Liquorice Extract','Squalane'],
+      benefits:['Intensely hydrates dry and dehydrated skin','Helps improve skin elasticity and firmness','Supports a smoother, more youthful appearance','Helps reduce the appearance of fine lines','Brightens and evens skin tone','Strengthens the skin\'s natural moisture barrier'],
+      howto:['Cleanse and tone the skin.','Apply a small amount to face and neck.','Gently massage until fully absorbed.','Use morning and evening for best results.','Follow with sunscreen during daytime use.'],
+      bestfor:['Normal skin','Dry skin','Combination skin','Mature skin','Dehydrated skin'],
+      risks:['For external use only.','Avoid direct contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation or redness occurs and consult a dermatologist.','Perform a patch test before first use if you have sensitive skin.','Keep out of reach of children.','Store in a cool, dry place away from direct sunlight.']
+    },
+    'facial-scrub': {
+      name:'Facial Scrub', tagline:'Polish. Renew. Glow. With Rose Geranium & Lavender.',
+      desc:'A gentle yet effective exfoliating treatment that removes dead skin cells, unclogs pores and reveals a smoother, brighter and more radiant complexion.',
+      ingredients:['Rose Geranium Essential Oil','Lavender Essential Oil'],
+      benefits:['Gently exfoliates and removes dead skin cells','Helps unclog pores and refine skin texture','Promotes a brighter, smoother complexion','Reduces the appearance of dullness','Enhances skin radiance and natural glow'],
+      howto:['Cleanse your face and pat skin dry.','Apply a small amount of scrub to damp skin.','Gently massage in circular motions for 1–2 minutes.','Rinse thoroughly with lukewarm water.','Use 2–3 times a week. Follow with a moisturiser.'],
+      bestfor:['Normal skin','Dry skin','Combination skin','Oily skin','Sensitive skin'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation occurs and consult a dermatologist.','Keep out of reach of children.']
+    },
+    'acne-cream': {
+      name:'Acne Cream', tagline:'Clearer Skin. Confident You. With Tea Tree Oil.',
+      desc:'A targeted solution designed to help combat acne, reduce inflammation and promote clearer, healthier-looking skin.',
+      ingredients:['Tea Tree Oil (antibacterial & anti-inflammatory)'],
+      benefits:['Helps reduce acne and prevent new breakouts','Calms inflammation and soothes irritated skin','Helps control excess oil and shine','Supports a healthier skin barrier','Promotes a clearer, smoother complexion'],
+      howto:['Cleanse your face and pat skin dry.','Apply a thin layer to affected areas or the entire face.','Gently massage until fully absorbed.','Use morning and evening for best results.','Follow with sunscreen during the day.'],
+      bestfor:['Acne-prone skin','Oily skin','Combination skin','Adult skin','Skin with blemishes'],
+      risks:['For external use only.','Avoid contact with eyes — rinse thoroughly if contact occurs.','Discontinue use if irritation, redness or excessive dryness occurs — consult a dermatologist.','Do a patch test before first use if you have sensitive skin.','Keep out of reach of children.','Store in a cool, dry place away from direct sunlight.']
+    },
+    'lip-balm': {
+      name:'Lip Balm Tins', tagline:'Nourish. Protect. Soften. Naturally beautiful lips, every day.',
+      desc:'Crafted with natural, high-quality ingredients to deeply nourish, protect and soothe dry, chapped lips.',
+      ingredients:['Argan Oil (rich in fatty acids & Vitamin E)','Beeswax (natural protective barrier)'],
+      benefits:['Deeply hydrates and nourishes dry, chapped lips','Helps repair and protect delicate lips','Locks in moisture for long-lasting softness','Soothes irritation and maintains natural lip health','Perfect for daily use in any season','Compact, travel-friendly tin with screw cap'],
+      howto:['Gently twist open the tin anti-clockwise.','Scoop a small amount using a clean finger.','Apply evenly to lips as often as needed throughout the day.','Close the tin tightly after use to keep it fresh.'],
+      bestfor:['Dry or chapped lips','Daily lip care','All seasons','Travel-friendly use'],
+      risks:['For external use only.','Avoid contact with eyes.','Discontinue use if irritation or redness occurs.','Perform a patch test before first use if you have sensitive skin.','Keep out of reach of children.','Store in a cool, dry place away from direct sunlight and heat.']
+    }
+  };
+
+  function openSkinInfo(key) {
+    const p = SKIN_INFO[key];
+    if (!p) return;
+    document.getElementById('skinTagline').textContent = p.tagline;
+    document.getElementById('skinName').textContent = p.name;
+    document.getElementById('skinDesc').textContent = p.desc;
+    const ingrHtml = p.ingredients.map(i => `<span class="skin-tag">${i}</span>`).join('');
+    const benHtml = p.benefits.map(b => `<li>${b}</li>`).join('');
+    const howHtml = p.howto.map((s,i) => `<li><strong>${i+1}.</strong> ${s}</li>`).join('');
+    const bestHtml = p.bestfor.map(b => `<span class="skin-tag">${b}</span>`).join('');
+    const riskHtml = p.risks.map(r => `<li>${r}</li>`).join('');
+    document.getElementById('skinBody').innerHTML =
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">Key Ingredients</h4><div class="skin-tags">${ingrHtml}</div></div>` +
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">Benefits</h4><ul class="skin-list">${benHtml}</ul></div>` +
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">How to Use</h4><ul class="skin-list">${howHtml}</ul></div>` +
+      `<div style="margin-bottom:14px"><h4 style="color:#8B3A52;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 7px;">Best For</h4><div class="skin-tags">${bestHtml}</div></div>` +
+      `<div style="background:#fff8f9;border-radius:8px;padding:10px 12px"><h4 style="color:#999;font-size:11px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;margin:0 0 6px;">Caution</h4><ul class="skin-list risks">${riskHtml}</ul></div>`;
+    document.getElementById('skinOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSkinModal() {
+    document.getElementById('skinOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function openDisclaimer() {
+    document.getElementById('disclaimerOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDisclaimer() {
+    document.getElementById('disclaimerOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  </script>
+</body>
+</html>
