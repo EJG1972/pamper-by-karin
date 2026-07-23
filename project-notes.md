@@ -1,4 +1,4 @@
-# Karin — Pamperlang Agent Website
+# Karin — Pamperlang Team Leader Website
 **Started:** 2026-07-22
 **Status:** Built from the Riette/Marjorie template — still playing around, not live yet
 
@@ -7,8 +7,9 @@
 ## Her Details
 
 - Full name: Karin Pieters
-- WhatsApp: 083 433 1977
-- Area: Meyerton
+- Role: Pamperlang Team Leader (not just an agent)
+- WhatsApp: +27 83 433 1977
+- Team leader areas: Meyerton, Heidelberg, Standerton & Ermelo
 - Email: karinpieters5@gmail.com
 
 ---
@@ -40,8 +41,8 @@ https://ejg1972.github.io/pamper-by-karin/
 - Personal hero section (photo placeholder for now) with her name and WhatsApp button
 - Full product grid — same products, photos and prices as the other two sites
 - Fragrance selectors on relevant products
-- WhatsApp order button + floating WhatsApp button, both linked to 083 433 1977
-- Contact card with her WhatsApp, email and area
+- WhatsApp order button + floating WhatsApp button, both linked to +27 83 433 1977
+- Contact card with her WhatsApp, email and team leader areas
 - How to order section
 - Footer
 
