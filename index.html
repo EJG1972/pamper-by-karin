@@ -313,9 +313,16 @@
       height: 480px;
       border-radius: 260px;
       overflow: hidden;
-      background: url('karin-hero.png') no-repeat center / cover;
+      background: linear-gradient(135deg, var(--sand), var(--rose-light));
       box-shadow: 0 30px 80px rgba(139,58,88,0.2);
       position: relative;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
     }
 
     .photo-placeholder {
@@ -1809,7 +1816,7 @@
         </div>
       </div>
       <div class="hero-photo-wrap">
-        <div class="photo-frame"></div>
+        <div class="photo-frame"><img src="karin-hero.png" alt="Karin Pieters" /></div>
       </div>
     </div>
   </section>
